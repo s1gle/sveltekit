@@ -1,21 +1,37 @@
 <script>
   let input = '';
-  let output = '';
+  let result = '';
+  let isLoading = false;
 
-  async function handleSubmit() {
+  async function query() {
+    isLoading = true;
     try {
-      const res = await fetch('/api/predict', {
+      const response = await fetch('/api/huggingface', {
         method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ inputs: input })
       });
-      output = await res.text();
+
+      if (!response.ok) throw new Error('Request failed');
+      
+      const data = await response.json();
+      result = data[0]?.generated_text || 'No result';
+
     } catch (err) {
-      console.error(err);
-      output = 'Error processing request';
+      result = `Error: ${err.message}`;
+    } finally {
+      isLoading = false;
     }
   }
 </script>
 
-<input bind:value={input}>
-<button on:click={handleSubmit}>Run Model</button>
-<pre>{output}</pre>
+<input bind:value={input} placeholder="Enter your prompt..." disabled={isLoading}>
+<button on:click={query} disabled={isLoading}>
+  {isLoading ? 'Processing...' : 'Submit'}
+</button>
+
+{#if result}
+  <div class="result-box">
+    {result}
+  </div>
+{/if}
