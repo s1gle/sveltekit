@@ -1,4 +1,6 @@
-# sv
+[![Netlify Status](https://api.netlify.com/api/v1/badges/623cdf0f-62b7-46cd-885a-6ed190844bca/deploy-status)](https://app.netlify.com/sites/svkit/deploys)
+
+https://svkit.netlify.app
 
 Шаг 3: Запуск разработческого сервера
 Теперь вы готовы запустить проект на локальном сервере.
