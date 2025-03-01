@@ -1,0 +1,1 @@
+<p><a href="/emoji">emoji</a></p>

@@ -1,0 +1,1 @@
+import{t as r,a as n}from"../chunks/1576qPhf.js";import{s,f as i}from"../chunks/B8wOluw4.js";import{s as d}from"../chunks/5xiZurWH.js";var f=r('<nav data-sveltekit-reload=""><a href="/">home</a> <a href="/about">about</a> <a href="/advanched">advanched</a></nav> <!>',1);function v(t,e){var a=f(),o=s(i(a),2);d(o,()=>e.children),n(t,a)}export{v as component};
