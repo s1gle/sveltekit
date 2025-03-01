@@ -2,8 +2,6 @@
 	import { onMount } from 'svelte';
 
 	let { children } = $props();
-
-	let seconds = $state(0);
 </script>
 
 <nav data-sveltekit-reload>
