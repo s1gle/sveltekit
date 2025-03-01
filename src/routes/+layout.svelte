@@ -7,7 +7,8 @@
 <nav data-sveltekit-reload>
     <a href="/">home</a>
 	<a href="/about">about</a>
-    <a href="/advanched">advanched</a>    
+    <a href="/advanched">advanched</a>
+	<a href="/slider">slider</a>  
 </nav>
 
 {@render children()}
