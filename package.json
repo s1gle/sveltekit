@@ -20,5 +20,8 @@
 		"svelte-check": "^4.0.0",
 		"typescript": "^5.0.0",
 		"vite": "^6.2.0"
+	},
+	"dependencies": {
+		"svelte-image-gallery": "^1.8.0"
 	}
 }
