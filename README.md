@@ -2,6 +2,8 @@
 
 https://svkit.netlify.app
 
+https://aceternity.sveltekit.io/
+
 Шаг 3: Запуск разработческого сервера
 Теперь вы готовы запустить проект на локальном сервере.
 
