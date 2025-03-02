@@ -110,6 +110,8 @@
 <a href="/30d">30d</a>
 <a href="/anime">anime</a>
 <a href="/new">new</a>
+<a href="/rss">rss</a>
+<a href="/wiki">wiki</a>
 </nav>
 
 
