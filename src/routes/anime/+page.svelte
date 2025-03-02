@@ -61,8 +61,8 @@
 
 <style>
   main {
-    text-align: right;
     margin-right: 10px;
+    text-align: right;
   }
 
   img {
@@ -70,5 +70,10 @@
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(205, 205, 205, 0.7);
+  }
+
+  #card {
+    display: flex;
+    width: 100px;
   }
 </style>
