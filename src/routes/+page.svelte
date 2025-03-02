@@ -7,13 +7,21 @@
 
     // Функция для переключения состояния ячейки (выбрана/не выбрана)
     function toggleDay(day) {
-        selectedDays = new Set(selectedDays); // Создаем новое множество, чтобы Svelte отслеживал изменения
+        selectedDays = new Set(selectedDays); // Создаем новое множество для реактивности
         if (selectedDays.has(day)) {
             selectedDays.delete(day); // Убираем день из выбранных
         } else {
             selectedDays.add(day); // Добавляем день в выбранные
         }
-        console.log(selectedDays); // Для отладки: выводим выбранные дни в консоль
+    }
+
+    // Функция для определения длины последовательности выбранных дней
+    function getStreakLength(day) {
+        let streak = 0;
+        while (selectedDays.has(day - streak)) {
+            streak++;
+        }
+        return streak;
     }
 
     // Функция для обработки нажатия клавиши
@@ -30,6 +38,7 @@
     {#each days as day}
         <button
             class="cell {selectedDays.has(day) ? 'selected' : ''}"
+            style:background-color={selectedDays.has(day) ? `hsl(120, 70%, ${70 - getStreakLength(day) * 5}%)` : '#ddd'}
             on:click={() => toggleDay(day)}
             on:keydown={(e) => handleKeyDown(e, day)}
             title="День {day}"
@@ -43,7 +52,7 @@
     .grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(20px, 1fr)); /* Ячейки адаптируются под ширину экрана */
-        gap: 5px; /* Расстояние между ячейками */
+        gap: 1px; /* Тонкие границы между ячейками */
     }
 
     .cell {
@@ -61,15 +70,11 @@
         background-color: #ccc; /* Изменение цвета при наведении */
     }
 
-    .cell.selected {
-        background-color: #4CAF50; /* Зеленый цвет для выбранных ячеек */
-    }
-
     /* Адаптация для маленьких экранов */
     @media (max-width: 600px) {
         .grid {
             grid-template-columns: repeat(auto-fill, minmax(15px, 1fr)); /* Уменьшаем размер ячеек для телефонов */
-            gap: 3px;
+            gap: 1px;
         }
     }
 </style>
