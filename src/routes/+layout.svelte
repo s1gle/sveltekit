@@ -8,7 +8,9 @@
     <a href="/">home</a>
 	<a href="/about">about</a>
     <a href="/advanched">advanched</a>
-	<a href="/slider">slider</a>  
+	<a href="/slider">slider</a>
+	<a href="/kalendarik-pinarik">pinarik</a> 
+	<a href="/inter-tabl">interactive calendar</a>
 </nav>
 
 {@render children()}
