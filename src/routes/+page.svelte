@@ -4,3 +4,4 @@
 <h4>Header</h4>
 <h5>Header</h5>
 <h6>Header</h6>
+<a href='https://doka.guide/css/web-colors/'>Палитра цветов</a>

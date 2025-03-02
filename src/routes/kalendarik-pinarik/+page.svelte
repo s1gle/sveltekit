@@ -38,41 +38,42 @@
     /* Основные стили для таблицы */
     .table-container {
         display: inline-block;
-        padding: 10px;
-        background-color: #f0f0f0;
+        padding: 10px 0px;
+        background-color: inherit;
+        color: #fff;
     }
 
     .table {
         display: grid;
-        grid-template-columns: 50px repeat(31, 20px); /* 31 столбец для дней + 50px для месяцев */
-        gap: 2px; /* Расстояние между ячейками */
+        grid-template-columns: 50px repeat(31, 22px); /* 31 столбец для дней + 50px для месяцев */
+        gap: 1px; /* Расстояние между ячейками */
     }
 
     .cell {
         background-color: #fff;
-        border: 1px solid #ccc;
-        padding: 5px;
+        border: 0px solid #000;
+        padding: 5px 0;
         text-align: center;
-        font-size: 12px;
-        width: 20px; /* Фиксированная ширина ячейки */
-        height: 20px; /* Фиксированная высота ячейки */
+        font-size: 14px;
+        width: 22px; /* Фиксированная ширина ячейки */
+        height: 15px; /* Фиксированная высота ячейки */
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
     .cell.colored {
-        background-color: darkblue; /* Зелёный цвет для закрашенных ячеек */
+        background-color: silver; /* Зелёный цвет для закрашенных ячеек */
     }
 
     .header-cell {
-        background-color: #e0e0e0;
-        font-weight: bold;
+        background-color: inherit;
+        font-weight: 400;
     }
 
     .month-cell {
-        background-color: #e0e0e0;
-        font-weight: bold;
+        background-color: inherit;
+        font-weight: 400;
         text-align: left;
         width: 50px; /* Фиксированная ширина для месяцев */
     }
@@ -97,19 +98,19 @@
     /* Стили для кнопки */
     .button {
         margin-top: 10px;
-        padding: 10px 20px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 14px;
+        
     }
 
     .button:hover {
         background-color: #45a049;
     }
 </style>
+
+<!-- Кнопка для закрашивания следующей ячейки --> 
+<button class="button" on:click={colorNextCell}> 📌</button>
+
+<!-- Кнопка для сброса --> 
+<button class="button" on:click={() => { coloredCells = new Set(); nextCellIndex = 0; localStorage.removeItem('coloredCells'); }}>🆑</button>
 
 <div class="table-container">
     <div class="table">
@@ -131,9 +132,4 @@
             {/each}
         {/each}
     </div>
-
-    <!-- Кнопка для закрашивания следующей ячейки -->
-    <button class="button" on:click={colorNextCell}>+</button>
-    <button class="button" on:click={() => { coloredCells = new Set(); nextCellIndex = 0; localStorage.removeItem('coloredCells'); }}>
-    Сброс</button>
 </div>

@@ -1,1 +1,1 @@
-export { default as component } from "../../../../src/routes/emoji/+page.svelte";
+export { default as component } from "../../../../src/routes/advanched/+page.svelte";

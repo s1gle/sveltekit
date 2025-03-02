@@ -40,7 +40,8 @@
         }
     }
 </script>
-<a href="/inter-tabl/30d-calendar">30d calendar</a>
+<a href="/30d-calendar">30d calendar</a>
+<a href="/anime">anime</a>
 <h1>Таблица на 365 дней</h1>
 <div class="grid">
     {#each days as day}
