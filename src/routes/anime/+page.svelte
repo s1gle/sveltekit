@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte';
+  import Parser from 'rss-parser';
 
   // Массив с URL-адресами изображений
   const images = [
@@ -38,20 +39,53 @@
   ];
 
   let randomImage = '';
-  const randomIndex = Math.floor(Math.random() * images.length);
+  let newsItems = [];
+  let error = null; // Для отображения ошибок
 
   // Функция для выбора случайного изображения
   const getRandomImage = () => {
+    const randomIndex = Math.floor(Math.random() * images.length);
     return images[randomIndex];
+  };
+
+  // Функция для загрузки RSS-новостей
+  const loadRSS = async () => {
+    try {
+      const parser = new Parser();
+      const feed = await parser.parseURL('https://habr.com/ru/rss/all/all/'); // URL RSS-фида
+      newsItems = feed.items.slice(0, 5); // Ограничиваем количество новостей до 5
+    } catch (err) {
+      console.error('Ошибка при загрузке RSS:', err);
+      error = 'Не удалось загрузить новости. Проверьте подключение к интернету.';
+    }
   };
 
   // При монтировании компонента выбираем случайное изображение и загружаем данные
   onMount(() => {
     randomImage = getRandomImage();
+    loadRSS();
   });
 </script>
 
 <main>
+  <!-- Раздел RSS-новостей -->
+  <div id="news">
+    <h2>Последние новости</h2>
+    {#if error}
+      <p style="color: red;">{error}</p>
+    {:else if newsItems.length > 0}
+      <ul>
+        {#each newsItems as item}
+          <li>
+            <a href={item.link} target="_blank">{item.title}</a>
+            <p>{item.contentSnippet}</p>
+          </li>
+        {/each}
+      </ul>
+    {:else}
+      <p>Загрузка новостей...</p>
+    {/if}
+  </div>
 
   <!-- Раздел anime -->
   {#if randomImage}
@@ -64,7 +98,7 @@
 <style>
   main {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     margin: 10px;
   }
 
@@ -79,4 +113,26 @@
     width: 150px;
   }
 
+  #news {
+    margin-left: 0px;
+    max-width: 500px;
+  }
+
+  #news ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  #news li {
+    margin-bottom: 10px;
+  }
+
+  #news a {
+    text-decoration: none;
+    color: #007BFF;
+  }
+
+  #news a:hover {
+    text-decoration: underline;
+  }
 </style>
