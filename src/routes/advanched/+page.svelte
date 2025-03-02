@@ -1,4 +1,5 @@
-<p><a href="/emoji">emoji</a></p>
+<p><a href="/emoji">emoji</a>
+<a href="/palette">palette</a></p>
 
 <script>
   const images = [
@@ -40,5 +41,12 @@
   img:hover {
     opacity: 1;
     transform: scale(1.04);
+  }
+
+  a {
+    border: 1px solid DarkSlateGray;
+    background-color: black;
+    padding: 5px 10px;
+    margin: 0 5px;
   }
 </style>

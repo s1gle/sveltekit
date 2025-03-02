@@ -78,6 +78,32 @@
   --font-family-vault: "Lucida Handwriting", "Segoe UI Emoji";
 }
 
+/* Светлая тема */
+[data-theme="light"] {
+  --bg-1: #ffffff; /* Основной фон */
+  --bg-2: #f5f5f5; /* Вторичный фон */
+  --bg-3: #e0e0e0; /* Третичный фон */
+  --fg-1: #333333; /* Основной текст */
+  --fg-2: #666666; /* Вторичный текст */
+  --fg-3: #999999; /* Третичный текст */
+  --link: #0078d4; /* Цвет ссылок */
+  --link-hover: #005a9e; /* Цвет ссылок при наведении */
+  --link-active: #004578; /* Цвет ссылок при нажатии */
+  --background-blockquote: #f0f0f0; /* Фон цитат */
+  --background-code: #f5f5f5; /* Фон кода */
+  --background-code-2: #e0e0e0; /* Вторичный фон кода */
+  --text-color-code: #d58000; /* Цвет текста кода */
+  --code-normal: #333333; /* Цвет обычного текста кода */
+  --table-background-color: #f5f5f5; /* Фон таблицы */
+  --table-background-color-odd: #e0e0e0; /* Фон нечетных строк таблицы */
+  --table-border-color: #cccccc; /* Цвет границ таблицы */
+  --table-thead-background-color: #e0e0e0; /* Фон заголовков таблицы */
+  --table-hover-color: #d0d0d0; /* Цвет при наведении на строку таблицы */
+  --table-hover-thead-color: #c0c0c0; /* Цвет при наведении на заголовок таблицы */
+  --checklist-bg: #f5f5f5; /* Фон чекбоксов */
+  --checklist-bg-hover: #e0e0e0; /* Фон чекбоксов при наведении */
+}
+
 /* Основные стили для body */
 body {
   background: var(--bg-1);
@@ -379,46 +405,5 @@ ul.todos li form {
   gap: 0.5em;
   margin: 0 0 0.5em;
   padding: 0.5em 0.5em 0.5em 1em;
-  transition: filter 0.2s, opacity 0.2s;
-  display: flex;
-  position: relative;
-  user-select: none;
-}
-
-ul.todos li:not(:has(> form)) {
-  background: var(--bg-1);
-  filter: drop-shadow(2px 3px 6px rgba(0, 0, 0, 0.1));
-  border-radius: 5px;
-  align-items: center;
-  gap: 0.5em;
-  margin: 0 0 0.5em;
-  padding: 0.5em 0.5em 0.5em 1em;
-  transition: filter 0.2s, opacity 0.2s;
-  display: flex;
-  position: relative;
-  user-select: none;
-}
-
-ul.todos .done {
-  filter: none;
-  opacity: 0.4;
-}
-
-ul.todos button {
-  cursor: pointer;
-  aspect-ratio: 1;
-  opacity: 0.5;
-  background-color: transparent;
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: 1rem 1rem;
-  border: none;
-  width: 3em;
-  height: 3em;
-  margin: -0.5em -0.5em -0.5em 0;
-  transition: opacity 0.2s;
-}
-
-ul.todos button:hover {
-  opacity: 1;
+  transition: filter 0.2s, opacity 0.2;
 }
