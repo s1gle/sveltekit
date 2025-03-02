@@ -61,8 +61,9 @@
 
 <style>
   main {
+    display: flex;
+    justify-content: flex-end;
     margin-right: 10px;
-    text-align: right;
   }
 
   img {
@@ -73,7 +74,6 @@
   }
 
   #card {
-    display: flex;
-    width: 100px;
+    width: 150px;
   }
 </style>
