@@ -39,19 +39,21 @@
 
   let randomImage = '';
   const randomIndex = Math.floor(Math.random() * images.length);
-  
+
   // Функция для выбора случайного изображения
   const getRandomImage = () => {
     return images[randomIndex];
   };
 
-  // При монтировании компонента выбираем случайное изображение
+  // При монтировании компонента выбираем случайное изображение и загружаем данные
   onMount(() => {
     randomImage = getRandomImage();
   });
 </script>
 
 <main>
+
+  <!-- Раздел anime -->
   {#if randomImage}
     <div id='card'><img src={randomImage} alt="Случайное изображение" /></div>
   {:else}
@@ -63,7 +65,7 @@
   main {
     display: flex;
     justify-content: flex-end;
-    margin-right: 10px;
+    margin: 10px;
   }
 
   img {
@@ -76,4 +78,5 @@
   #card {
     width: 150px;
   }
+
 </style>

@@ -1,6 +1,6 @@
 <script>
-    // Создаем массив из 30/31 элементов для генерации ячеек
-    const days = Array.from({ length: 31 }, (_, i) => i + 1);
+    // Создаем массив из 365 элементов для генерации ячеек
+    const days = Array.from({ length: 365 }, (_, i) => i + 1);
 
     // Множество для хранения выбранных дней
     let selectedDays = new Set();
@@ -40,8 +40,9 @@
         }
     }
 </script>
-
-<h1>Март</h1>
+<h1>Таблица на 365 дней <button on:click={() => { selectedDays = new Set(); localStorage.removeItem('selectedDays'); }}>
+    Сброс
+</button></h1>
 <div class="grid">
     {#each days as day}
         <button
@@ -54,23 +55,21 @@
         ></button>
     {/each}
 </div>
-<button style='margin-top:10px;' on:click={() => { selectedDays = new Set(); localStorage.removeItem('selectedDays'); }}>
-    Сброс
-</button>
+
 <style>
     /* Основные стили для таблицы */
     .grid {
         display: grid;
-        grid-template-columns: repeat(7, minmax(2px, 50px)); /* Уменьшаем размер ячеек */
+        grid-template-columns: repeat(31, minmax(2px, 25px)); /* Уменьшаем размер ячеек */
         gap: 2px; /* Тонкие границы между ячейками */
-        
+        margin-right: 10px;
     }
 
     .cell {
         width: 100%;
         padding-top: 70%; /* Делаем ячейки квадратными */
-        background-color: #fff;
-        border-radius: 30px; /* Радиус скругления */
+        background-color: #ddd;
+        border-radius: 0px; /* Уменьшаем радиус скругления */
         cursor: pointer;
         transition: background-color 0.3s ease;
         border: 2px solid black; /* Убираем стандартные стили кнопки */
@@ -79,13 +78,13 @@
     }
 
     .cell:hover {
-        background-color: #333; /* Изменение цвета при наведении */
+        background-color: #ccc; /* Изменение цвета при наведении */
     }
 
     /* Адаптация для маленьких экранов */
     @media (max-width: 600px) {
         .grid {
-            grid-template-columns: repeat(4, minmax(8px, 1fr)); /* Ещё меньше ячеек для мобильных устройств */
+            grid-template-columns: repeat(31, minmax(2px, 15px)); /* Ещё меньше ячеек для мобильных устройств */
             gap: 1px;
         }
 

@@ -13,22 +13,24 @@ export const nodes = [
 	() => import('./nodes/9'),
 	() => import('./nodes/10'),
 	() => import('./nodes/11'),
-	() => import('./nodes/12')
+	() => import('./nodes/12'),
+	() => import('./nodes/13')
 ];
 
 export const server_loads = [];
 
 export const dictionary = {
 		"/": [3],
-		"/30d-calendar": [4],
-		"/about": [5],
-		"/advanched": [6,[2]],
-		"/anime": [7],
-		"/emoji": [8],
-		"/inter-tabl": [9],
+		"/30d": [4],
+		"/365d": [5],
+		"/about": [6],
+		"/advanched": [7,[2]],
+		"/anime": [8],
+		"/emoji": [9],
 		"/kalendarik-pinarik": [10],
-		"/palette": [11],
-		"/slider": [12]
+		"/new": [11],
+		"/palette": [12],
+		"/slider": [13]
 	};
 
 export const hooks = {

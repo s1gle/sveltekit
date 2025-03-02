@@ -5,6 +5,7 @@
 
   // Используем $state для реактивной переменной
   let currentTheme = $state('dark'); // Значение по умолчанию
+  let showScrollToTop = $state(false); // Состояние видимости кнопки "Наверх"
 
   // Функция для переключения темы
   function toggleTheme() {
@@ -15,6 +16,14 @@
     document.documentElement.setAttribute('data-theme', currentTheme);
   }
 
+  // Функция для прокрутки к началу страницы
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', // Плавная прокрутка
+    });
+  }
+
   // Устанавливаем тему при монтировании компонента
   onMount(() => {
     if (typeof window !== 'undefined') {
@@ -22,9 +31,28 @@
       if (savedTheme) {
         currentTheme = savedTheme;
       }
+
+      // Отслеживаем прокрутку страницы
+      window.addEventListener('scroll', handleScroll);
     }
     document.documentElement.setAttribute('data-theme', currentTheme);
+
+    // Убираем слушатель при уничтожении компонента
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('scroll', handleScroll);
+      }
+    };
   });
+
+  // Обработчик прокрутки
+  function handleScroll() {
+    if (window.scrollY > 200) { // Показывать кнопку, если прокрутили больше 300px
+      showScrollToTop = true;
+    } else {
+      showScrollToTop = false;
+    }
+  }
 </script>
 
 <style>
@@ -37,10 +65,34 @@
     border-radius: var(--border-radius);
     cursor: pointer;
   }
+
+  #scroll-to-top {
+    font-size: 2.2em;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: inherit;
+    padding: 0px;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    transform: translateY(20px);
+  }
+
+  #scroll-to-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 /*
-  #theme-toggle:hover {
+  #scroll-to-top:hover {
     background-color: var(--link-hover);
   }*/
+
+  #subhead {
+    margin: 0px;
+    padding: opx;
+  }
 </style>
 
 <nav data-sveltekit-reload>
@@ -50,8 +102,24 @@
   <a href="/slider">slider</a>
   <a href="/kalendarik-pinarik">pinarik</a>
   <button id="theme-toggle" onclick={toggleTheme}>
-  {currentTheme === 'dark' ? '🌞' : '🌙'}
+    {currentTheme === 'dark' ? '🌞' : '🌙'}
   </button>
 </nav>
+<nav id='subhead'>
+<a href="/365d">365d</a>
+<a href="/30d">30d</a>
+<a href="/anime">anime</a>
+<a href="/new">new</a>
+</nav>
+
 
 {@render children()}
+
+<!-- Кнопка "Наверх" -->
+<button
+  id="scroll-to-top"
+  class={showScrollToTop ? 'visible' : ''}
+  onclick={scrollToTop}
+>
+  🚀
+</button>
