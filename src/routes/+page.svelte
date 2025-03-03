@@ -16,7 +16,7 @@
   async function fetchThisDayContent() {
     try {
       const proxyUrl = 'https://api.allorigins.win/raw?url='; // Прокси-сервер
-      const apiUrl = 'https://ru.wikipedia.org/api/rest_v1/page/mobile-sections/Заглавная_страница';
+      const apiUrl = 'http://www.aphorisme.ru/random/?q=2329';
       const response = await fetch(proxyUrl + encodeURIComponent(apiUrl));
 
       // Преобразуем ответ в JSON
