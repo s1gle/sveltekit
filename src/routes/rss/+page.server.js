@@ -1,12 +1,33 @@
-/* парсинг RSS на стороне сервера: */
+import Parser from 'rss-parser';
 
-import { getRssFeed } from '$lib/rss';
+const parser = new Parser();
 
 export async function load() {
-  const rssUrl = 'https://www.anekdot.ru/rss/export_bestday.xml'; // URL RSS-канала
-  const feed = await getRssFeed(rssUrl);
+  // Массив URL-адресов RSS-каналов
+  const rssUrls = [
+    'https://www.anekdot.ru/rss/export_j.xml', // Пример 1
+    'https://www.anekdot.ru/rss/export_bestday.xml', // Пример 2
+    'https://www.anekdot.ru/rss/export_j_burning.xml' // Пример 3
+  ];
 
-  return {
-    feed
-  };
+  try {
+    // Загружаем данные из всех RSS-каналов
+    const feeds = await Promise.all(
+      rssUrls.map(async (url) => {
+        const feed = await parser.parseURL(url);
+        return feed;
+      })
+    );
+
+    // Возвращаем данные в виде объекта
+    return {
+      feeds
+    };
+  } catch (error) {
+    console.error('Error parsing RSS feeds:', error);
+    return {
+      status: 500,
+      error: 'Failed to load RSS feeds'
+    };
+  }
 }

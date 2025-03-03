@@ -6,6 +6,9 @@
 	"/365d": [],
 	"/advanched": [],
 	"/anime": [],
+	"/api/fact": [
+		"src/routes/api/fact/+server.js"
+	],
 	"/api/joke": [
 		"src/routes/api/joke/+server.js"
 	],

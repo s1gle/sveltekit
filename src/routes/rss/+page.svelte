@@ -1,24 +1,25 @@
-<script lang="ts">
-  import { getRssFeed } from '$lib/rss';
-
-  export let data: { feed: import('rss-parser').Output | null };
+<script>
+  export let data;
 </script>
 
 <main>
-  <h1>RSS Feed</h1>
-  {#if data.feed}
-    <ul>
-      {#each data.feed.items as item}
-        <li>
-          <a href={item.link} target="_blank" rel="noopener noreferrer">
-            {item.title}
-          </a>
-          <p>{item.contentSnippet}</p>
-        </li>
-      {/each}
-    </ul>
+  <h1>RSS Feeds</h1>
+  {#if data.feeds}
+    {#each data.feeds as feed}
+      <h2>{feed.title}</h2>
+      <ul>
+        {#each feed.items as item}
+          <li>
+            <a href={item.link} target="_blank" rel="noopener noreferrer">
+              {item.title}
+            </a>
+            <p>{item.contentSnippet}</p>
+          </li>
+        {/each}
+      </ul>
+    {/each}
   {:else}
-    <p>Не удалось загрузить RSS-канал.</p>
+    <p>Не удалось загрузить RSS-каналы.</p>
   {/if}
 </main>
 

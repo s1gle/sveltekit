@@ -41,8 +41,6 @@
         {#each events as event}
         <div class="event">
           <p><span style='color: grey'>{event.year}</span> {event.text}</p>
-          {#if event.pages}
-          {/if}
         </div>
       {/each}
     </div>
@@ -72,15 +70,6 @@
 
   .event {
     line-height: 1.3rem;
-  }
-
-  .event:last-child {
-  }
-
-  .event h2 {
-  }
-
-  .event p {
   }
 
 </style>
