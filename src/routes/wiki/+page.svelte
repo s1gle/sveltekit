@@ -11,8 +11,8 @@
       const html = response.data;
 
       // Парсим HTML с помощью cheerio
-      const $ = cheerio.default.load(html); // Используем .default для доступа к экспорту
-      const aphorism = $('.aphorisme-text').text().trim(); // Ищем элемент с афоризмом
+      const cheerioInstance = cheerio.default.load(html); // Используем cheerioInstance вместо $
+      const aphorism = cheerioInstance('.aphorisme-text').text().trim(); // Ищем элемент с афоризмом
 
       if (!aphorism) {
         throw new Error('Афоризм не найден на странице');
