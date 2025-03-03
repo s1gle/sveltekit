@@ -7,9 +7,9 @@ export async function GET() {
         const response = await axios.get(url);
         const $ = cheerio.load(response.data);
 
-        // Найдите элемент, содержащий анекдот (используйте DevTools, чтобы определить правильный селектор)
-        const joke = $('.joke-class').text().trim(); // Замените '.joke-class' на реальный класс
-
+        // Найдите элемент, содержащий анекдот
+        const jokeElement = $('#result > #result_anekdot'); // Используем правильный ID
+        const joke = jokeElement.text()//.trim(); // Извлекаем текст и убираем лишние пробелы#result_anekdot
         if (joke) {
             return new Response(JSON.stringify({ joke }), {
                 headers: { 'Content-Type': 'application/json' },

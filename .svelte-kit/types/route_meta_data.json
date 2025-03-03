@@ -15,7 +15,9 @@
 	"/gallery": [],
 	"/kalendarik-pinarik": [],
 	"/palette": [],
-	"/rss": [],
+	"/rss": [
+		"src/routes/rss/+page.server.js"
+	],
 	"/slider": [],
 	"/utilities": []
 }

@@ -34,7 +34,7 @@ export const dictionary = {
 		"/gallery": [11],
 		"/kalendarik-pinarik": [12],
 		"/palette": [13],
-		"/rss": [14],
+		"/rss": [~14],
 		"/slider": [15],
 		"/utilities": [16]
 	};
