@@ -54,20 +54,38 @@
   ];
 
   let isCompact = false; // Состояние компактного режима
+  let shuffledImages = [...images]; // Копия массива для перемешивания
 
   // Функция для переключения режима
   function toggleCompact() {
     isCompact = !isCompact;
   }
+
+  // Функция для перемешивания картинок
+  function shuffleImages() {
+    shuffledImages = [...images].sort(() => Math.random() - 0.5);
+  }
+
+  // Перемешиваем картинки при загрузке страницы
+  shuffleImages();
 </script>
 
-<!-- Кнопка для переключения режима -->
-<button on:click={toggleCompact}>
-  {isCompact ? 'Обычный режим' : 'Компактный режим'}
-</button>
+<!-- Кнопки управления -->
+<div class="controls">
+  <button on:click={toggleCompact}>
+    {isCompact ? 'Обычный режим' : 'Компактный режим'}
+  </button>
+  <button on:click={shuffleImages}>Перемешать картинки</button>
+</div>
 
+<!-- Статистика -->
+<div class="stats">
+  <p>Количество картинок: {shuffledImages.length}</p>
+</div>
+
+<!-- Галерея -->
 <div class="gallery {isCompact ? 'compact' : ''}">
-  {#each images as image, index}
+  {#each shuffledImages as image, index}
     <img src={image} alt={`Poster ${index + 1}`}>
   {/each}
 </div>
@@ -99,23 +117,11 @@
     transform: scale(1.04);
   }
 
-  a {
-    border: 1px solid DarkSlateGray;
-    background-color: black;
-    padding: 5px 10px;
-    margin: 0 5px;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.2s;
-  }
-
-  a:hover {
-    background-color: DarkSlateGray;
+  .controls {
+    margin-bottom: 10px;
   }
 
   button {
-    margin-bottom: 10px;
     padding: 5px 10px;
     background-color: black;
     color: white;
@@ -123,9 +129,15 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.2s;
+    margin-right: 10px;
   }
 
   button:hover {
     background-color: DarkSlateGray;
+  }
+
+  .stats {
+    margin-bottom: 10px;
+    font-size: 16px;
   }
 </style>
