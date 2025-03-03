@@ -55,7 +55,6 @@
       {@html thisDayContent}
     {/if}
   </div>
-<iframe src='http://www.aphorisme.ru/random/?q=2329'></iframe>
 </main>
 
 <style>
