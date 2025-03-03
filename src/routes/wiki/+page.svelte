@@ -9,7 +9,7 @@
       const html = response.data;
 
       // Парсим HTML с помощью cheerio
-      const cheerioInstance = cheerio.load(html); // Переименовали переменную
+      const cheerioInstance = cheerio.load(html);
       const aphorism = cheerioInstance('.aphorisme-text').text().trim(); // Ищем элемент с афоризмом
 
       if (!aphorism) {
@@ -24,4 +24,17 @@
     } catch (error) {
       return {
         status: 500,
-        error: new Error('Не удалось загрузить афоризм:
+        error: new Error('Не удалось загрузить афоризм: ' + error.message) // Закрываем строку
+      };
+    }
+  }
+</script>
+
+<script>
+  export let aphorism;
+</script>
+
+<main>
+  <h1>Случайный афоризм</h1>
+  <p>{aphorism}</p>
+</main>
