@@ -84,37 +84,20 @@
     opacity: 1;
     transform: translateY(0);
   }
-/*
+/**/
   #scroll-to-top:hover {
-    background-color: var(--link-hover);
-  }*/
-
-  #subhead {
-    margin: 0px;
-    padding: opx;
+    background-color: Peru;
   }
 </style>
 
 <nav data-sveltekit-reload>
   <a href="/">home</a>
-  <a href="/about">about</a>
   <a href="/advanched">advanched</a>
-  <a href="/slider">slider</a>
-  <a href="/kalendarik-pinarik">pinarik</a>
+  <a href="/utilities">utilities</a>
   <button id="theme-toggle" onclick={toggleTheme}>
     {currentTheme === 'dark' ? '🌞' : '🌙'}
   </button>
-</nav>
-<nav id='subhead'>
-<a href="/365d">365d</a>
-<a href="/30d">30d</a>
-<a href="/anime">anime</a>
-<a href="/new">new</a>
-<a href="/rss">rss</a>
-<a href="/gallery">gallery</a>
-</nav>
-
-
+  </nav>
 {@render children()}
 
 <!-- Кнопка "Наверх" -->

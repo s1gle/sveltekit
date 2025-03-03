@@ -1,15 +1,21 @@
 {
-	"/": [],
+	"/": [
+		"src/routes/+page.js"
+	],
 	"/30d": [],
 	"/365d": [],
-	"/about": [],
 	"/advanched": [],
 	"/anime": [],
+	"/api/joke": [
+		"src/routes/api/joke/+server.js"
+	],
+	"/arch-101": [],
+	"/day-in-history": [],
 	"/emoji": [],
 	"/gallery": [],
 	"/kalendarik-pinarik": [],
-	"/new": [],
 	"/palette": [],
 	"/rss": [],
-	"/slider": []
+	"/slider": [],
+	"/utilities": []
 }

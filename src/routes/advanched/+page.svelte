@@ -2,6 +2,9 @@
 <p>
   <a href="/emoji">emoji</a>
   <a href="/palette">palette</a>
+  <a href="/365d">365d</a>
+  <a href="/30d">30d</a> 
+  <a href="/slider">slider</a>
 </p>
 
 <style>
