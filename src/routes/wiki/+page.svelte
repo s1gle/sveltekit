@@ -1,16 +1,18 @@
 <script context="module">
   import axios from 'axios';
-  import cheerio from 'cheerio';
 
   export async function load() {
     try {
+      // Динамически импортируем cheerio только на сервере
+      const cheerio = await import('cheerio');
+
       // Делаем запрос к сайту
       const response = await axios.get('http://www.aphorisme.ru/random/?q=2329');
       const html = response.data;
 
       // Парсим HTML с помощью cheerio
-      const cheerioInstance = cheerio.load(html);
-      const aphorism = cheerioInstance('.aphorisme-text').text().trim(); // Ищем элемент с афоризмом
+      const $ = cheerio.default.load(html); // Используем .default для доступа к экспорту
+      const aphorism = $('.aphorisme-text').text().trim(); // Ищем элемент с афоризмом
 
       if (!aphorism) {
         throw new Error('Афоризм не найден на странице');
@@ -24,7 +26,7 @@
     } catch (error) {
       return {
         status: 500,
-        error: new Error('Не удалось загрузить афоризм: ' + error.message) // Закрываем строку
+        error: new Error('Не удалось загрузить афоризм: ' + error.message)
       };
     }
   }
