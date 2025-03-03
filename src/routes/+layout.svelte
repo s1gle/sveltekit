@@ -111,7 +111,7 @@
 <a href="/anime">anime</a>
 <a href="/new">new</a>
 <a href="/rss">rss</a>
-<a href="/wiki">wiki</a>
+<a href="/gallery">gallery</a>
 </nav>
 
 

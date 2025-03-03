@@ -1,94 +1,86 @@
+<h3>new</h3>
 <script>
   import { onMount } from 'svelte';
 
-  // Переменные для хранения данных
-  let imageOfTheDay = '';
-  let description = '';
+  let events = [];
   let isLoading = true;
-  let error = '';
+  let error = null;
 
-  // Функция для получения данных "Изображение дня" с Wikipedia через прокси
-  async function fetchImageOfTheDay() {
+  onMount(async () => {
     try {
-      const proxyUrl = 'https://api.allorigins.win/raw?url='; // Прокси-сервер
-      const apiUrl = 'https://ru.wikipedia.org/api/rest_v1/page/mobile-sections/Заглавная_страница';
-      const response = await fetch(proxyUrl + encodeURIComponent(apiUrl));
+      const today = new Date();
+      const month = today.getMonth() + 1; // Месяцы в JavaScript начинаются с 0
+      const day = today.getDate();
 
-      // Преобразуем ответ в JSON
-      const data = await response.json();
-      console.log(data); // Выводим данные в консоль для отладки
+      const response = await fetch(
+        `https://ru.wikipedia.org/api/rest_v1/feed/onthisday/events/${month}/${day}`
+      );
 
-      // Извлекаем раздел "Изображение дня"
-      const sections = data.lead.sections;
-      const imageSection = sections.find(section => section.line === 'Изображение дня');
-
-      if (imageSection) {
-        // Извлекаем URL изображения и описание
-        const imageElement = new DOMParser()
-          .parseFromString(imageSection.text, 'text/html')
-          .querySelector('img');
-
-        if (imageElement) {
-          imageOfTheDay = imageElement.src; // URL изображения
-          description = imageElement.alt; // Описание изображения
-        } else {
-          error = 'Изображение не найдено в разделе.';
-        }
-      } else {
-        error = 'Раздел "Изображение дня" не найден.';
+      if (!response.ok) {
+        throw new Error('Не удалось загрузить данные');
       }
+
+      const data = await response.json();
+      events = data.events;
     } catch (err) {
-      console.error('Ошибка при загрузке данных:', err);
-      error = 'Не удалось загрузить данные.';
+      error = err.message;
     } finally {
       isLoading = false;
     }
-  }
-
-  // При монтировании компонента загружаем данные
-  onMount(() => {
-    fetchImageOfTheDay();
   });
 </script>
 
 <main>
-  <!-- Раздел "Изображение дня" -->
-  <div id="image-of-the-day">
-    <h2>Изображение дня</h2>
-    {#if isLoading}
-      <p>Загрузка данных...</p>
-    {:else if error}
-      <p>{error}</p>
-    {:else}
-      <img src={imageOfTheDay} alt={description} />
-      <p>{description}</p>
-    {/if}
-  </div>
+  {#if isLoading}
+    <div class="loader">Загрузка...</div>
+  {:else if error}
+    <div class="error">{error}</div>
+  {:else}
+    <div class="events-container">
+    <h2>В этот день</h2>
+        {#each events as event}
+        <div class="event">
+          <p><span style='color: grey'>{event.year}</span> {event.text}</p>
+          {#if event.pages}
+          {/if}
+        </div>
+      {/each}
+    </div>
+  {/if}
 </main>
 
 <style>
-  #image-of-the-day {
-    margin-left: 20px;
-    max-width: 600px;
-    background-color: #f9f9f9;
-    padding: 15px;
+
+  .loader,
+  .error {
+    text-align: center;
+  }
+
+  .loader {
+    color: #007bff;
+  }
+
+  .error {
+    color: #ff3860;
+  }
+
+  .events-container {
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    border: 1px solid grey;
   }
 
-  #image-of-the-day h2 {
-    margin-top: 0;
-    color: #333;
+  .event {
+    line-height: 1.3rem;
   }
 
-  #image-of-the-day img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
+  .event:last-child {
   }
 
-  #image-of-the-day p {
-    color: #555;
-    margin-top: 10px;
+  .event h2 {
   }
+
+  .event p {
+  }
+
 </style>

@@ -26,6 +26,7 @@
 	});
 </script>
 
+{@render children()}
 
 <progress value={seconds/100}></progress><span style='color: grey; font-weight: bold;'>{seconds} %</span>
 <style>
@@ -35,4 +36,3 @@
 	}
 </style>
 
-{@render children()}

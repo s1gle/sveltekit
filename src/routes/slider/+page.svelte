@@ -1,4 +1,4 @@
-<h1>Homepage</h1>
+<h1>slider</h1>
 <script>
   import { onMount } from 'svelte';
 

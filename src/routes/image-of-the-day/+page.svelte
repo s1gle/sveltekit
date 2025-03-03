@@ -6,10 +6,37 @@
 
     // Парсим HTML для получения изображения дня
     const parser = new DOMParser();
-    console.log(data.parse.text['*']);
+    const doc = parser.parseFromString(data.parse.text['*'], 'text/html');
 
+    // Ищем изображение дня
+    const imageElement = doc.querySelector('.mainpage-gallery img');
+    let imageUrl = null;
+    let description = 'Изображение дня не найдено';
+
+    if (imageElement) {
+      imageUrl = imageElement.src;
+      description = imageElement.alt || 'Изображение дня';
+    }
+
+    // Если изображение не найдено, попробуем другой подход
+    if (!imageUrl) {
+      const imageElements = doc.querySelectorAll('img');
+      for (const img of imageElements) {
+        if (img.src.includes('commons')) {
+          imageUrl = img.src;
+          description = img.alt || 'Изображение дня';
+          break;
+        }
+      }
+    }
+
+    return {
+      props: {
+        imageUrl,
+        description
+      }
+    };
   }
-    
 </script>
 
 <script>
