@@ -1,7 +1,17 @@
 <script context="module">
   import axios from 'axios';
+  import { browser } from '$app/environment';
 
   export async function load() {
+    // Если код выполняется в браузере, пропускаем выполнение
+    if (browser) {
+      return {
+        props: {
+          aphorism: null
+        }
+      };
+    }
+
     try {
       // Динамически импортируем cheerio только на сервере
       const cheerio = await import('cheerio');
@@ -38,5 +48,9 @@
 
 <main>
   <h1>Случайный афоризм</h1>
-  <p>{aphorism}</p>
+  {#if aphorism}
+    <p>{aphorism}</p>
+  {:else}
+    <p>Афоризм не загружен.</p>
+  {/if}
 </main>
