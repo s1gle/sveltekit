@@ -94,6 +94,9 @@
   <a href="/">home</a>
   <a href="/advanched">advanched</a>
   <a href="/utilities">utilities</a>
+  <a href="/contribution">contribution</a>
+  
+  
   <button id="theme-toggle" onclick={toggleTheme}>
     {currentTheme === 'dark' ? '🌞' : '🌙'}
   </button>
