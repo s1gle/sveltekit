@@ -1,7 +1,7 @@
 <script>
     export let data;
 
-    let joke = data.joke;
+    let fact = data.fact;
     let error = data.error;
 
     async function fetchNewJoke() {
@@ -10,7 +10,7 @@
             const result = await response.json();
 
             if (response.ok) {
-                joke = result.joke;
+                fact = result.fact;
                 error = null;
             } else {
                 error = result.error || 'Не удалось загрузить анекдот.';
@@ -25,7 +25,7 @@
     {#if error}
         <p class="error">{error}</p>
     {:else}
-        <p>{joke}</p>
+        <p>{fact}</p>
     {/if}
     <button on:click={fetchNewJoke}>Получить новый анекдот</button>
 </div>

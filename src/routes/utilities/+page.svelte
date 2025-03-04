@@ -1,7 +1,6 @@
 <h1>utilities</h1>
 <div id='btnbox'>
     <a href="/arch-101">arch-101</a>
-    <a href="/anime">anime</a>
     <a href="/day-in-history">В этот день</a>
     <a href="/rss">rss</a>
     <a href="/gallery">gallery</a>

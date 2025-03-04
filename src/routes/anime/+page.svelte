@@ -49,33 +49,93 @@
   onMount(() => {
     randomImage = getRandomImage();
   });
-</script>
 
+/****** функция с цитатами стетхэма ********/
+    export let data;
+
+    let jokes = data.jokes || [];
+    let error = data.error;
+
+    async function fetchNewJoke() {
+        try {
+            const response = await fetch('/api/joke');
+            const result = await response.json();
+
+            if (response.ok) {
+                jokes = result.jokes || [];
+                error = null;
+            } else {
+                error = result.error || 'Не удалось загрузить цитаты.';
+            }
+        } catch (err) {
+            error = 'Ошибка при загрузке цитат.';
+        }
+    }
+
+    // Выполняем fetchNewJoke при загрузке страницы
+    onMount(() => {
+        fetchNewJoke();
+    });
+</script>
 <main>
+<div class="joke-container" id="main">
+    {#if error}
+        <p class="error">{error}</p>
+    {:else}
+            {#each jokes as joke}
+                <div id='joke'>{joke}</div>
+            {/each}
+        
+    {/if}
+
+</div>
   <!-- Раздел anime -->
   {#if randomImage}
-    <div id='card'><img src={randomImage} alt="Случайное изображение" /></div>
+    <img src={randomImage} alt="Случайное изображение" />
   {:else}
     <p>Загрузка изображения...</p>
   {/if}
 </main>
 
 <style>
-  main {
-    display: flex;
-    justify-content: flex-end;
-    margin: 10px;
+  #main {
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
   img {
     max-width: 100%;
+    
+    margin: 5px;
     height: auto;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(205, 205, 205, 0.7);
+    box-shadow: 0 4px 8px rgba(250, 8, 8, 0.7);
   }
 
-  #card {
-    width: 150px;
+  a:hover {
+    background-color: indigo;
   }
-
+   
+  .joke-container {
+    padding: 0px;
+    border: 0px solid #ccc;
+    border-radius: 0px;
+    max-width: 600px;
+    margin: 0px;
+    
+    }
+    .error {
+        color: red;
+    }
+    #joke {
+        border: 1px solid green;
+        padding: 1px;
+        margin: 1px;
+        width: 150px;
+    }
+    li {
+        margin-bottom: 0px;
+        padding: 0px;
+        border-bottom: 0px solid #eee;
+    }
 </style>

@@ -116,9 +116,9 @@ body {
 /* Заголовки */
 h1, h2, h3, h4, h5, h6 {
   font-variant-numeric: tabular-nums;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.1;
-  margin: 1rem 0.1rem;
+  margin: 0.5rem 0.1rem;
 }
 
 h1 {
@@ -358,7 +358,7 @@ form {
 nav {
   background: var(--bg-2);
   border-radius: var(--border-radius);
-  padding: 1em;
+  padding: 0.3em;
   margin: 0 0 1em;
   display: flex;
   gap: 1em;

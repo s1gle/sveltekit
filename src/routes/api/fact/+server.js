@@ -9,19 +9,19 @@ export async function GET() {
 
         // Найдите элемент, содержащий анекдот
         const jokeElement = $('.text'); // Используем правильный ID
-        const joke = jokeElement.text().trim(); // Извлекаем текст и убираем лишние пробелы#result_anekdot
-        if (joke) {
-            return new Response(JSON.stringify({ joke }), {
+        const fact = jokeElement.text().trim(); // Извлекаем текст и убираем лишние пробелы#result_anekdot
+        if (fact) {
+            return new Response(JSON.stringify({ fact }), {
                 headers: { 'Content-Type': 'application/json' },
             });
         } else {
-            return new Response(JSON.stringify({ error: 'Анекдот не найден на странице.' }), {
+            return new Response(JSON.stringify({ error: 'Не найден на странице.' }), {
                 status: 404,
                 headers: { 'Content-Type': 'application/json' },
             });
         }
     } catch (error) {
-        return new Response(JSON.stringify({ error: 'Ошибка при получении анекдота.' }), {
+        return new Response(JSON.stringify({ error: 'Ошибка при получении.' }), {
             status: 500,
             headers: { 'Content-Type': 'application/json' },
         });

@@ -1,4 +1,3 @@
-<h3>new</h3>
 <script>
   import { onMount } from 'svelte';
 

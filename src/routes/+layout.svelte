@@ -66,12 +66,16 @@
     cursor: pointer;
   }
 
+  a:hover {
+    text-decoration: none;
+  }
+
   #scroll-to-top {
-    font-size: 2.2em;
+    font-size: 2em;
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: olive;
+    background-color: inherit;
     padding: 0px;
     border: none;
     cursor: pointer;
@@ -84,21 +88,17 @@
     opacity: 1;
     transform: translateY(0);
   }
-/**/
-  #scroll-to-top:hover {
-    background-color: Peru;
-  }
 </style>
 
 <nav data-sveltekit-reload>
-  <a href="/"><i class="fas fa-home fa-2xl" style="color: coral;"></i></a>
-  <a href="/advanched"><i class="fa-solid fa-flask fa-2xl" style="color: #B197FC;"></i></a>
-  <a href="/utilities"><i class="fa-solid fa-barcode fa-2xl" style="color: black"></i></a>
-  <a href="/contribution"><i class="fa-solid fa-oil-well fa-2xl"></i></a>
+  <a href="/"><span style="font-size: 2em">🏠</span></a>
+  <a href="/advanched"><span style="font-size: 2em">📅</span></a><a href="/anime"><span style="font-size: 2em">📺</span></a>
+  <a href="/utilities"><span style="font-size: 2em">💾</span></a>
+  <a href="/contribution"><span style="font-size: 2em">⚡️</span></a>
+  <a href="/palette"><span style="font-size: 2em">🎨</span></a>
   
-  
-  <button id="theme-toggle" onclick={toggleTheme}>
-    {currentTheme === 'dark' ? '🌞' : '🌙'}
+  <button style="font-size: 2em" id="theme-toggle" onclick={toggleTheme}>
+    {currentTheme === 'dark' ? '🔆' : '🌑'}
   </button>
   </nav>
 {@render children()}
@@ -109,5 +109,5 @@
   class={showScrollToTop ? 'visible' : ''}
   onclick={scrollToTop}
 >
-  <i class="fa-solid fa-angles-up fa-2xl"></i>
+  🔝
 </button>
