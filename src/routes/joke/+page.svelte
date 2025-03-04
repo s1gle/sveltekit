@@ -1,4 +1,5 @@
 <script>
+    import { onMount } from 'svelte';
     export let data;
 
     let jokes = data.jokes || [];
@@ -19,8 +20,12 @@
             error = 'Ошибка при загрузке цитат.';
         }
     }
+
+    // Выполняем fetchNewJoke при загрузке страницы
+    onMount(() => {
+        fetchNewJoke();
+    });
 </script>
-<a href='https://jasonstatham.fun/' target='_blank'>онлайн генератор</a>
 <div class="joke-container">
     {#if error}
         <p class="error">{error}</p>
@@ -31,8 +36,8 @@
             {/each}
         </ul>
     {/if}
-    <button on:click={fetchNewJoke}>Получить новые цитаты</button>
 </div>
+<a href='https://jasonstatham.fun/' target='_blank'>онлайн генератор</a>
 
 <style>
     .joke-container {
@@ -55,16 +60,5 @@
         padding: 10px;
         border-bottom: 1px solid #eee;
     }
-    button {
-        margin-top: 20px;
-        padding: 10px 20px;
-        background-color: #0077cc;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    button:hover {
-        background-color: #005fa3;
-    }
 </style>
+

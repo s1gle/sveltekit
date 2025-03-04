@@ -71,7 +71,7 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: inherit;
+    background-color: olive;
     padding: 0px;
     border: none;
     cursor: pointer;
@@ -91,10 +91,10 @@
 </style>
 
 <nav data-sveltekit-reload>
-  <a href="/">home</a>
-  <a href="/advanched">advanched</a>
-  <a href="/utilities">utilities</a>
-  <a href="/contribution">contribution</a>
+  <a href="/"><i class="fas fa-home fa-2xl" style="color: coral;"></i></a>
+  <a href="/advanched"><i class="fa-solid fa-flask fa-2xl" style="color: #B197FC;"></i></a>
+  <a href="/utilities"><i class="fa-solid fa-barcode fa-2xl" style="color: black"></i></a>
+  <a href="/contribution"><i class="fa-solid fa-oil-well fa-2xl"></i></a>
   
   
   <button id="theme-toggle" onclick={toggleTheme}>
@@ -109,5 +109,5 @@
   class={showScrollToTop ? 'visible' : ''}
   onclick={scrollToTop}
 >
-  🚀
+  <i class="fa-solid fa-angles-up fa-2xl"></i>
 </button>
