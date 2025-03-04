@@ -110,9 +110,9 @@
     /* Основные стили для таблиц */
     .table-container {
         display: inline-block;
-        padding: 10px 0px;
+        padding: 10px 10px;
         background-color: inherit;
-        color: #fff;
+        color: silver;
         margin-bottom: 20px;
     }
 
@@ -122,7 +122,7 @@
     }
 
     .cell {
-        background-color: #fff;
+        background-color: silver;
         border: 0px solid #000;
         padding: 5px 0;
         text-align: center;
@@ -135,7 +135,7 @@
     }
 
     .cell.colored {
-        background-color: silver; /* Цвет для закрашенных ячеек */
+        background-color: tan; /* Цвет для закрашенных ячеек */
     }
 
     .header-cell {
@@ -153,13 +153,30 @@
     /* Адаптация для маленьких экранов */
     @media (max-width: 600px) {
         .cell, .header-cell, .month-cell {
-            font-size: 10px; /* Уменьшаем размер шрифта */
-            width: 15px; /* Уменьшаем ширину ячейки */
-            height: 15px; /* Уменьшаем высоту ячейки */
+            font-size: 0px; /* Уменьшаем размер шрифта */
+            width: 5px; /* Уменьшаем ширину ячейки */
+            height: 5px; /* Уменьшаем высоту ячейки */
         }
 
+         /* Основные стили для таблиц */
+        .table-container {
+            display: flex;
+            padding: 0px 0px;
+            background-color: inherit;
+            color: silver;
+            margin-bottom: 20px;
+        }
+        .table {
+            display: grid;
+            gap: 0px; /* Расстояние между ячейками */
+        }
+
+        .header-cell {
+            display: none;
+        }
         .month-cell {
-            width: 45px; /* Уменьшаем ширину столбца с месяцами */
+            display: none;
+           /* width: 45px;  Уменьшаем ширину столбца с месяцами */
         }
     }
 
@@ -196,10 +213,31 @@
     <button on:click={resetCellsTable2}>Сбросить таблицу 2</button>
 </div>
 
+
 <!-- Статистика для первой таблицы -->
 <div class="stats">
     <p>Таблица 1: Закрашено ячеек: {filledCountTable1}</p>
     <p>Таблица 1: Процент закрашенных: {filledPercentageTable1}%</p>
+</div>
+<!-- Статистика для второй таблицы -->
+<div class="stats">
+    <p>Таблица 2: Закрашено ячеек: {filledCountTable2}</p>
+    <p>Таблица 2: Процент закрашенных: {filledPercentageTable2}%</p>
+</div>
+
+
+<!-- Годы жизни таблица -->
+<div class="table-container">
+    <div class="table" style="grid-template-columns: repeat(33, 22px);">
+        <!-- Ячейки второй таблицы -->
+        {#each Array.from({ length: 3 }) as _, row}
+            {#each Array.from({ length: 33 }) as _, col}
+                <div
+                    class="cell {coloredCellsTable2.has(`${row}-${col + 1}`) ? 'colored' : ''}"
+                ></div>
+            {/each}
+        {/each}
+    </div>
 </div>
 
 <!-- Первая таблица -->
@@ -225,22 +263,4 @@
     </div>
 </div>
 
-<!-- Статистика для второй таблицы -->
-<div class="stats">
-    <p>Таблица 2: Закрашено ячеек: {filledCountTable2}</p>
-    <p>Таблица 2: Процент закрашенных: {filledPercentageTable2}%</p>
-</div>
 
-<!-- Вторая таблица -->
-<div class="table-container">
-    <div class="table" style="grid-template-columns: repeat(33, 22px);">
-        <!-- Ячейки второй таблицы -->
-        {#each Array.from({ length: 3 }) as _, row}
-            {#each Array.from({ length: 33 }) as _, col}
-                <div
-                    class="cell {coloredCellsTable2.has(`${row}-${col + 1}`) ? 'colored' : ''}"
-                ></div>
-            {/each}
-        {/each}
-    </div>
-</div>

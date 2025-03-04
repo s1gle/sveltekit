@@ -1,11 +1,12 @@
 {
-	"/": [
-		"src/routes/+page.js"
-	],
+	"/": [],
 	"/30d": [],
 	"/365d": [],
 	"/advanched": [],
 	"/anime": [],
+	"/api/fact2": [
+		"src/routes/api/fact2/+server.js"
+	],
 	"/api/fact": [
 		"src/routes/api/fact/+server.js"
 	],
@@ -15,7 +16,9 @@
 	"/arch-101": [],
 	"/day-in-history": [],
 	"/emoji": [],
+	"/fact2": [],
 	"/gallery": [],
+	"/joke": [],
 	"/kalendarik-pinarik": [],
 	"/palette": [],
 	"/rss": [

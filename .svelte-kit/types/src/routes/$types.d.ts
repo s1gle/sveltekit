@@ -12,14 +12,12 @@ type EnsureDefined<T> = T extends null | undefined ? {} : T;
 type OptionalUnion<U extends Record<string, any>, A extends keyof U = U extends U ? keyof U : never> = U extends unknown ? { [P in Exclude<A, keyof U>]?: never } & U : never;
 export type Snapshot<T = any> = Kit.Snapshot<T>;
 type PageParentData = EnsureDefined<LayoutData>;
-type LayoutRouteId = RouteId | "/" | "/30d" | "/365d" | "/advanched" | "/anime" | "/arch-101" | "/day-in-history" | "/emoji" | "/gallery" | "/kalendarik-pinarik" | "/palette" | "/rss" | "/slider" | "/utilities" | null
+type LayoutRouteId = RouteId | "/" | "/30d" | "/365d" | "/advanched" | "/anime" | "/arch-101" | "/day-in-history" | "/emoji" | "/fact2" | "/gallery" | "/joke" | "/kalendarik-pinarik" | "/palette" | "/rss" | "/slider" | "/utilities" | null
 type LayoutParams = RouteParams & {  }
 type LayoutParentData = EnsureDefined<{}>;
 
 export type PageServerData = null;
-export type PageLoad<OutputData extends OutputDataShape<PageParentData> = OutputDataShape<PageParentData>> = Kit.Load<RouteParams, PageServerData, PageParentData, OutputData, RouteId>;
-export type PageLoadEvent = Parameters<PageLoad>[0];
-export type PageData = Expand<Omit<PageParentData, keyof Kit.LoadProperties<Awaited<ReturnType<typeof import('./proxy+page.js').load>>>> & OptionalUnion<EnsureDefined<Kit.LoadProperties<Awaited<ReturnType<typeof import('./proxy+page.js').load>>>>>>;
+export type PageData = Expand<PageParentData>;
 export type PageProps = { data: PageData }
 export type LayoutServerData = null;
 export type LayoutData = Expand<LayoutParentData>;
