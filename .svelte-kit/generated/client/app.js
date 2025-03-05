@@ -35,7 +35,7 @@ export const dictionary = {
 		"/contribution": [9],
 		"/day-in-history": [10],
 		"/emoji": [11],
-		"/fact": [12],
+		"/facts": [12],
 		"/gallery": [13],
 		"/joke": [14],
 		"/kalendarik-pinarik": [15],

@@ -11,6 +11,7 @@
 
     let fact = data.fact;
     let error = data.error;
+    let saying = data.saying;
 
     async function fetchNewJoke() {
         try {
@@ -27,8 +28,43 @@
             error = 'Ошибка при загрузке анекдота.';
         }
     }
-</script>
 
+
+/*  Получение цитаты через api saying
+    import { onMount } from 'svelte';
+    export let data; */
+/*
+    let saying = data.saying;
+    let error = data.error; 
+
+    async function fetchNewSaying() {
+        try {
+            const response = await fetch('/api/saying');
+            const result = await response.json();
+
+            if (response.ok) {
+                saying = result.saying;
+                error = null;
+            } else {
+                error = result.error || 'Не удалось загрузить.';
+            }
+        } catch (err) {
+            error = 'Ошибка при загрузке.';
+        }
+    }
+    // Выполняем fetchNewSaying при загрузке страницы
+    onMount(() => {
+        fetchNewSaying();
+    });*/
+    
+</script>
+<div class="saying-container">
+    {#if error}
+        <p class="error">{error}</p>
+    {:else}
+        <p>{saying}</p>
+    {/if}
+</div>
 <div class="container">
     <button on:click={fetchNewJoke}>Факт</button>
     {#if error}

@@ -8,20 +8,20 @@ export async function GET() {
         const $ = cheerio.load(response.data);
 
         // Найдите элемент, содержащий анекдот
-        const jokeElement = $('.text'); // Используем правильный ID
-        const joke = jokeElement.text().trim(); // Извлекаем текст и убираем лишние пробелы#result_anekdot
-        if (joke) {
-            return new Response(JSON.stringify({ joke }), {
+        const sayingElement = $('.text'); // Используем правильный ID
+        const saying = sayingElement.text().trim(); // Извлекаем текст и убираем лишние пробелы
+        if (saying) {
+            return new Response(JSON.stringify({ saying }), {
                 headers: { 'Content-Type': 'application/json' },
             });
         } else {
-            return new Response(JSON.stringify({ error: 'Анекдот не найден на странице.' }), {
+            return new Response(JSON.stringify({ error: 'saying не найден на странице.' }), {
                 status: 404,
                 headers: { 'Content-Type': 'application/json' },
             });
         }
     } catch (error) {
-        return new Response(JSON.stringify({ error: 'Ошибка при получении анекдота.' }), {
+        return new Response(JSON.stringify({ error: 'Ошибка при получении saying.' }), {
             status: 500,
             headers: { 'Content-Type': 'application/json' },
         });

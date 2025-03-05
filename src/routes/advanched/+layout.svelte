@@ -27,12 +27,15 @@
 </script>
 
 {@render children()}
-
-<progress value={seconds/100}></progress><span style='color: grey; font-weight: bold;'>{seconds} %</span>
+<div>
+<progress value={seconds/100}></progress><span style='color: grey; font-weight: bold;'>{seconds} %</span></div>
 <style>
 	progress {
 		display: block;
 		width: 100%;
+	}
+	.saying-container {
+		border: 1px solid red;
 	}
 </style>
 
