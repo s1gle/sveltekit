@@ -50,7 +50,7 @@
     randomImage = getRandomImage();
   });
 
-/****** функция с цитатами стетхэма ********/
+
     export let data;
 
     let jokes = data.jokes || [];
@@ -72,54 +72,60 @@
         }
     }
 
+    // Фильтруем шутки по индексам 2, 5, 6
+    function filterJokes(jokes) {
+        return jokes.filter((_, index) => [1, 2].includes(index));
+    }
+
     // Выполняем fetchNewJoke при загрузке страницы
     onMount(() => {
         fetchNewJoke();
     });
 </script>
 <main>
-<div class="joke-container" id="main">
+<div id="joke-container" class="container">
     {#if error}
         <p class="error">{error}</p>
     {:else}
-            {#each jokes as joke}
+            {#each filterJokes(jokes) as joke}
                 <div id='joke'>{joke}</div>
             {/each}
         
     {/if}
 
-</div>
+
   <!-- Раздел anime -->
   {#if randomImage}
-    <img src={randomImage} alt="Случайное изображение" />
+    <img class="item3" src={randomImage} alt="Случайное изображение" />
   {:else}
     <p>Загрузка изображения...</p>
-  {/if}
+  {/if}</div>
 </main>
 
 <style>
-  #main {
-    display: inline-grid;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+  .container {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: reapeat(2, auto);
+  /* Автоматическое размещение в колонку */
+    grid-auto-flow: column;
+}
+
+  .item3 {
+  grid-row: span 2;
+}
+
 
   img {
     max-width: 100%;
-    
-    margin: 5px;
+    margin: 0px 10px;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(250, 8, 8, 0.7);
   }
 
-  a:hover {
-    background-color: indigo;
-  }
-   
-  .joke-container {
+  #joke-container {
     padding: 0px;
-    border: 0px solid #ccc;
-    border-radius: 0px;
     max-width: 600px;
     margin: 0px;
     
@@ -128,14 +134,7 @@
         color: red;
     }
     #joke {
-        border: 1px solid green;
-        padding: 1px;
-        margin: 1px;
-        width: 150px;
-    }
-    li {
-        margin-bottom: 0px;
-        padding: 0px;
-        border-bottom: 0px solid #eee;
+        padding-right: 5px;
+        margin: 5px 0px;
     }
 </style>

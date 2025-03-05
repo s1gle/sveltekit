@@ -21,22 +21,29 @@
         }
     }
 
+    // Фильтруем шутки по индексам 2, 5, 6
+    function filterJokes(jokes) {
+        return jokes.filter((_, index) => [2, 5, 6].includes(index));
+    }
+
     // Выполняем fetchNewJoke при загрузке страницы
     onMount(() => {
         fetchNewJoke();
     });
 </script>
+
 <div class="joke-container">
     {#if error}
         <p class="error">{error}</p>
     {:else}
         <ul>
-            {#each jokes as joke}
+            {#each filterJokes(jokes) as joke}
                 <li>{joke}</li>
             {/each}
         </ul>
     {/if}
 </div>
+
 <a href='https://jasonstatham.fun/' target='_blank'>онлайн генератор</a>
 
 <style>
@@ -61,4 +68,3 @@
         border-bottom: 1px solid #eee;
     }
 </style>
-
