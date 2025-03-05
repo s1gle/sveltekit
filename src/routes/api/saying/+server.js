@@ -3,7 +3,7 @@ import * as cheerio from 'cheerio';
 
 export async function GET() {
     try {
-        const url = 'https://ultragenerator.com/facts/';
+        const url = 'https://randstuff.ru/saying/';
         const response = await axios.get(url);
         const $ = cheerio.load(response.data);
 

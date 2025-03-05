@@ -5,6 +5,4 @@
   <div style="display: flex; flex-direction: column">
   <h2>API</h2>
   <a href="/joke">joke</a>
-  <a href="/fact">fact</a>
-  <a href="/fact2">fact2</a>
   </div>

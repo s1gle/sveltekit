@@ -9,7 +9,7 @@
 <script>
     export let data;
 
-    let joke = data.joke;
+    let fact = data.fact;
     let error = data.error;
 
     async function fetchNewJoke() {
@@ -18,7 +18,7 @@
             const result = await response.json();
 
             if (response.ok) {
-                joke = result.joke;
+                fact = result.fact;
                 error = null;
             } else {
                 error = result.error || 'Не удалось загрузить анекдот.';
@@ -29,40 +29,43 @@
     }
 </script>
 
-<div class="joke-container">
+<div class="container">
+    <button on:click={fetchNewJoke}>Факт</button>
     {#if error}
         <p class="error">{error}</p>
     {:else}
-        <p>{joke}</p>
+        <div id="fact">{fact}</div>
     {/if}
-    <button on:click={fetchNewJoke}>Получить новый анекдот</button>
+    
 </div>
 
 <style>
-    .joke-container {
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        max-width: 600px;
-        margin: 0 auto;
-        text-align: center;
+    .container {
+        display: grid;
+        grid-template-columns: 0.1fr 1fr;
+        gap: 15px;
+        border-top: 2px solid gray;
+    }
+
+    #fact {
+        padding: 10px;
     }
     .error {
         color: red;
     }
 
-  a {
+  a, button {
     border: 1px solid DarkSlateGray;
     background-color: black;
     padding: 5px 10px;
-    margin: 0 5px;
+    margin: 5px;
     color: white;
     text-decoration: none;
     border-radius: 4px;
     transition: background-color 0.2s;
   }
 
-  a:hover {
+  a:hover, button:hover {
     background-color: DarkSlateGray;
   }
 

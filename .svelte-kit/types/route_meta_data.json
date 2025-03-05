@@ -4,20 +4,20 @@
 	"/365d": [],
 	"/advanched": [],
 	"/anime": [],
-	"/api/fact2": [
-		"src/routes/api/fact2/+server.js"
-	],
 	"/api/fact": [
 		"src/routes/api/fact/+server.js"
 	],
 	"/api/joke": [
 		"src/routes/api/joke/+server.js"
 	],
+	"/api/saying": [
+		"src/routes/api/saying/+server.js"
+	],
 	"/arch-101": [],
 	"/contribution": [],
 	"/day-in-history": [],
 	"/emoji": [],
-	"/fact2": [],
+	"/fact": [],
 	"/gallery": [],
 	"/joke": [],
 	"/kalendarik-pinarik": [],

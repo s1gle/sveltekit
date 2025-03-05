@@ -91,13 +91,13 @@
 </style>
 
 <nav data-sveltekit-reload>
-  <a href="/"><span style="font-size: 2em">🏠</span></a>
-  <a href="/advanched"><span style="font-size: 2em">📅</span></a><a href="/anime"><span style="font-size: 2em">📺</span></a>
-  <a href="/utilities"><span style="font-size: 2em">💾</span></a>
-  <a href="/contribution"><span style="font-size: 2em">⚡️</span></a>
-  <a href="/palette"><span style="font-size: 2em">🎨</span></a>
+  <a href="/"><span style="font-size: 1.8em">🏠</span></a>
+  <a href="/advanched"><span style="font-size: 1.8em">📅</span></a>
+  <a href="/anime"><span style="font-size: 1.8em">📺</span></a>
+  <a href="/contribution"><span style="font-size: 1.8em">⚡️</span></a>
+  <a href="/utilities"><span style="font-size: 1.8em">🔨</span></a>
   
-  <button style="font-size: 2em" id="theme-toggle" onclick={toggleTheme}>
+  <button style="font-size: 1.8em" id="theme-toggle" onclick={toggleTheme}>
     {currentTheme === 'dark' ? '🔆' : '🌑'}
   </button>
   </nav>

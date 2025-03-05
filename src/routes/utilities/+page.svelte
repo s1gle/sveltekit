@@ -1,4 +1,8 @@
 <h1>utilities</h1>
+<div id="headbox">
+  <a id="headbtn" href="/palette">🎨</a>
+  <a id="headbtn" href="/emoji">🗽</a>
+</div>
 <div id='btnbox'>
     <a href="/arch-101">arch-101</a>
     <a href="/day-in-history">В этот день</a>
@@ -76,7 +80,19 @@ flex-grow работает только для главной оси, пока �
     display: flex;
     flex-direction: column;
   }
-
+  #headbox {
+    border: 1px solid DarkSlateGray;
+    margin: 5px;
+  }
+  #headbtn {
+    border: 0px solid DarkSlateGray;
+    background-color: inherit;
+    padding: 5px;
+    margin: 5px;
+    text-decoration: none;
+    border-radius: 0px;
+    font-size: 1.8em;
+  }
   a {
     border: 1px solid DarkSlateGray;
     background-color: black;
