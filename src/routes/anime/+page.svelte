@@ -53,16 +53,16 @@
 
     export let data;
 
-    let jokes = data.jokes || [];
+    let jasons = data.jasons || [];
     let error = data.error;
 
     async function fetchNewJoke() {
         try {
-            const response = await fetch('/api/joke');
+            const response = await fetch('/api/jokes');
             const result = await response.json();
 
             if (response.ok) {
-                jokes = result.jokes || [];
+                jasons = result.jasons || [];
                 error = null;
             } else {
                 error = result.error || 'Не удалось загрузить цитаты.';
@@ -73,8 +73,8 @@
     }
 
     // Фильтруем шутки по индексам 2, 5, 6
-    function filterJokes(jokes) {
-        return jokes.filter((_, index) => [1, 2].includes(index));
+    function filterJokes(jasons) {
+        return jasons.filter((_, index) => [1, 2].includes(index));
     }
 
     // Выполняем fetchNewJoke при загрузке страницы
@@ -87,8 +87,8 @@
     {#if error}
         <p class="error">{error}</p>
     {:else}
-            {#each filterJokes(jokes) as joke}
-                <div id='joke'>{joke}</div>
+            {#each filterJokes(jasons) as jason}
+                <div id='joke'>{jason}</div>
             {/each}
         
     {/if}

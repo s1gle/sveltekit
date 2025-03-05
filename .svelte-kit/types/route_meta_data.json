@@ -4,14 +4,14 @@
 	"/365d": [],
 	"/advanched": [],
 	"/anime": [],
+	"/api/anekdot": [
+		"src/routes/api/anekdot/+server.js"
+	],
 	"/api/facts": [
 		"src/routes/api/facts/+server.js"
 	],
-	"/api/joke": [
-		"src/routes/api/joke/+server.js"
-	],
-	"/api/saying": [
-		"src/routes/api/saying/+server.js"
+	"/api/jokes": [
+		"src/routes/api/jokes/+server.js"
 	],
 	"/arch-101": [],
 	"/contribution": [],

@@ -1,3 +1,4 @@
+<h1>palette</h1>
 <table style="display: relative; width: 80%; text-align: center; font-weight: 500">
     <tbody>
     <tr>

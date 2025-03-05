@@ -7,74 +7,49 @@
 </p>
 
 <script>
+    import { onMount } from 'svelte';
     export let data;
 
-    let fact = data.fact;
+    let jasons = data.jasons || [];
     let error = data.error;
-    let saying = data.saying;
 
     async function fetchNewJoke() {
         try {
-            const response = await fetch('/api/fact');
+            const response = await fetch('/api/jokes');
             const result = await response.json();
 
             if (response.ok) {
-                fact = result.fact;
+                jasons = result.jasons || [];
                 error = null;
             } else {
-                error = result.error || 'Не удалось загрузить анекдот.';
+                error = result.error || 'Не удалось загрузить цитаты.';
             }
         } catch (err) {
-            error = 'Ошибка при загрузке анекдота.';
+            error = 'Ошибка при загрузке цитат.';
         }
     }
 
-
-/*  Получение цитаты через api saying
-    import { onMount } from 'svelte';
-    export let data; */
-/*
-    let saying = data.saying;
-    let error = data.error; 
-
-    async function fetchNewSaying() {
-        try {
-            const response = await fetch('/api/saying');
-            const result = await response.json();
-
-            if (response.ok) {
-                saying = result.saying;
-                error = null;
-            } else {
-                error = result.error || 'Не удалось загрузить.';
-            }
-        } catch (err) {
-            error = 'Ошибка при загрузке.';
-        }
+    // Фильтруем шутки по индексам 2, 5, 6
+    function filterJokes(jasons) {
+        return jasons.filter((_, index) => [1, 2].includes(index));
     }
-    // Выполняем fetchNewSaying при загрузке страницы
+
+    // Выполняем fetchNewJoke при загрузке страницы
     onMount(() => {
-        fetchNewSaying();
-    });*/
-    
+        fetchNewJoke();
+    });
 </script>
-<div class="saying-container">
+<!--
+<button on:click={fetchNewJokes}>Факт</button>-->
+<div id="container">
     {#if error}
         <p class="error">{error}</p>
     {:else}
-        <p>{saying}</p>
-    {/if}
-</div>
-<div class="container">
-    <button on:click={fetchNewJoke}>Факт</button>
-    {#if error}
-        <p class="error">{error}</p>
-    {:else}
-        <div id="fact">{fact}</div>
-    {/if}
-    
-</div>
-
+            {#each filterJokes(jasons) as jason}
+                <div id='joke'>{jason}</div>
+            {/each}
+        
+    {/if}</div>
 <style>
     .container {
         display: grid;

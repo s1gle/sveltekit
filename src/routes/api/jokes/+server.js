@@ -8,14 +8,14 @@ export async function GET() {
         const $ = cheerio.load(response.data);
 
         // Найдите элемент, содержащий цитаты
-        const jokeElement = $('body > section'); // Используем правильный селектор
-        const jokeText = jokeElement.text().trim(); // Извлекаем текст и убираем лишние пробелы
+        const jasonElement = $('body > section'); // Используем правильный селектор
+        const jasonText = jasonElement.text().trim(); // Извлекаем текст и убираем лишние пробелы
 
         // Разделяем текст на отдельные цитаты (по строкам)
-        const jokes = jokeText.split('\n').filter(line => line.trim() !== '');
+        const jasons = jasonText.split('\n').filter(line => line.trim() !== '');
 
-        if (jokes.length > 0) {
-            return new Response(JSON.stringify({ jokes }), {
+        if (jasons.length > 0) {
+            return new Response(JSON.stringify({ jasons }), {
                 headers: { 'Content-Type': 'application/json' },
             });
         } else {
