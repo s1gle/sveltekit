@@ -1,13 +1,12 @@
 <h1>utilities</h1>
 <div id="headbox">
   <a id="headbtn" href="/palette">🎨</a>
-  <a id="headbtn" href="/emoji">🗽</a>
+  <a id="headbtn" href="/emoji">😀</a>
 </div>
 <div id='btnbox'>
     <a href="/arch-101">arch-101</a>
     <a href="/day-in-history">В этот день</a>
     <a href="/rss">rss</a>
-    <a href="/gallery">gallery</a>
     <a href="/kalendarik-pinarik">pinarik</a>
 </div>
 <h2>CSS Flexbox</h2>

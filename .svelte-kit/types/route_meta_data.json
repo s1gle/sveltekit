@@ -4,9 +4,6 @@
 	"/365d": [],
 	"/advanched": [],
 	"/anime": [],
-	"/api/anekdot": [
-		"src/routes/api/anekdot/+server.js"
-	],
 	"/api/facts": [
 		"src/routes/api/facts/+server.js"
 	],
