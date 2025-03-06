@@ -13,6 +13,8 @@
   --font: "Trebuchet MS", Helvetica, sans-serif; /* Основной шрифт */
   --font-mono: "Lucida Console", Monaco, monospace; /* Моноширинный шрифт */
 
+  --global-font-size: 18px; /* По умолчанию */
+
   --h1-size: 1.5625em;
   --h2-size: 1.4375em;
   --h3-size: 1.3125em;
@@ -111,7 +113,7 @@ body {
   font-family: var(--font);
   margin: 1rem;
   line-height: 1.5;
-  font-size: 1.1em;
+  font-size: var(--global-font-size);
 }
 
 /* Заголовки */

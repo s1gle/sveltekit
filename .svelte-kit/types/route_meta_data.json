@@ -1,16 +1,18 @@
 {
 	"/": [],
-	"/30d": [],
-	"/365d": [],
 	"/advanched": [],
 	"/anime": [],
+	"/api/data": [
+		"src/routes/api/data/+server.js"
+	],
 	"/api/facts": [
 		"src/routes/api/facts/+server.js"
 	],
 	"/api/jokes": [
 		"src/routes/api/jokes/+server.js"
 	],
-	"/arch-101": [],
+	"/barchar": [],
+	"/ch": [],
 	"/contribution": [],
 	"/day-in-history": [],
 	"/emoji": [],

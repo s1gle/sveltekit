@@ -225,3 +225,242 @@ export interface User {
 
 ### Итог
 Папка `src/lib` в SvelteKit — это мощный инструмент для организации кода. Вы можете хранить там компоненты, утилиты, константы, стили и типы, а затем легко импортировать их в любую часть вашего приложения с помощью алиаса `$lib`. Это делает код более модульным, удобным для поддержки и повторного использования.
+
+Вот примеры различных типов визуализаций с использованием Chart.js и данных из JSON в SvelteKit. Мы будем использовать разные форматы данных для каждого типа графиков.
+
+---
+
+### 1. **Столбчатая диаграмма (Bar Chart)**
+#### `data.json`
+```json
+{
+  "bar": {
+    "labels": ["Январь", "Февраль", "Март", "Апрель", "Май"],
+    "datasets": [{
+      "label": "Продажи",
+      "data": [12, 19, 3, 5, 2]
+    }]
+  }
+}
+```
+
+#### `BarChart.svelte`
+```svelte
+<script>
+  import { onMount, onDestroy } from 'svelte';
+  import { Chart, BarController, CategoryScale, LinearScale, BarElement } from 'chart.js';
+  import data from './data.json';
+
+  Chart.register(BarController, CategoryScale, LinearScale, BarElement);
+  let chart;
+
+  onMount(() => {
+    const ctx = document.getElementById('barChart').getContext('2d');
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: data.bar,
+      options: { scales: { y: { beginAtZero: true } } }
+    });
+  });
+
+  onDestroy(() => chart?.destroy());
+</script>
+
+<canvas id="barChart" />
+```
+
+---
+
+### 2. **Линейный график (Line Chart)**
+#### `data.json`
+```json
+{
+  "line": {
+    "labels": ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
+    "datasets": [{
+      "label": "Температура (°C)",
+      "data": [22, 19, 24, 25, 23, 26, 27],
+      "borderColor": "rgb(255, 99, 132)"
+    }]
+  }
+}
+```
+
+#### `LineChart.svelte`
+```svelte
+<script>
+  import { onMount, onDestroy } from 'svelte';
+  import { Chart, LineController, CategoryScale, LinearScale, PointElement, LineElement } from 'chart.js';
+  import data from './data.json';
+
+  Chart.register(LineController, CategoryScale, LinearScale, PointElement, LineElement);
+  let chart;
+
+  onMount(() => {
+    const ctx = document.getElementById('lineChart').getContext('2d');
+    chart = new Chart(ctx, {
+      type: 'line',
+      data: data.line,
+      options: { responsive: true }
+    });
+  });
+
+  onDestroy(() => chart?.destroy());
+</script>
+
+<canvas id="lineChart" />
+```
+
+---
+
+### 3. **Круговая диаграмма (Pie Chart)**
+#### `data.json`
+```json
+{
+  "pie": {
+    "labels": ["Красный", "Синий", "Желтый"],
+    "datasets": [{
+      "data": [300, 50, 100],
+      "backgroundColor": ["#FF6384", "#36A2EB", "#FFCE56"]
+    }]
+  }
+}
+```
+
+#### `PieChart.svelte`
+```svelte
+<script>
+  import { onMount, onDestroy } from 'svelte';
+  import { Chart, PieController, ArcElement, Tooltip, Legend } from 'chart.js';
+  import data from './data.json';
+
+  Chart.register(PieController, ArcElement, Tooltip, Legend);
+  let chart;
+
+  onMount(() => {
+    const ctx = document.getElementById('pieChart').getContext('2d');
+    chart = new Chart(ctx, {
+      type: 'pie',
+      data: data.pie,
+      options: { plugins: { legend: { position: 'top' } } }
+    });
+  });
+
+  onDestroy(() => chart?.destroy());
+</script>
+
+<canvas id="pieChart" />
+```
+
+---
+
+### 4. **Радиальная диаграмма (Radar Chart)**
+#### `data.json`
+```json
+{
+  "radar": {
+    "labels": ["Скорость", "Выносливость", "Сила", "Ловкость", "Интеллект"],
+    "datasets": [{
+      "label": "Характеристики",
+      "data": [65, 59, 90, 81, 56],
+      "backgroundColor": "rgba(75, 192, 192, 0.2)"
+    }]
+  }
+}
+```
+
+#### `RadarChart.svelte`
+```svelte
+<script>
+  import { onMount, onDestroy } from 'svelte';
+  import { Chart, RadarController, RadialLinearScale, PointElement, LineElement, Filler } from 'chart.js';
+  import data from './data.json';
+
+  Chart.register(RadarController, RadialLinearScale, PointElement, LineElement, Filler);
+  let chart;
+
+  onMount(() => {
+    const ctx = document.getElementById('radarChart').getContext('2d');
+    chart = new Chart(ctx, {
+      type: 'radar',
+      data: data.radar,
+      options: { elements: { line: { tension: 0 } } }
+    });
+  });
+
+  onDestroy(() => chart?.destroy());
+</script>
+
+<canvas id="radarChart" />
+```
+
+---
+
+### 5. **Пузырьковая диаграмма (Bubble Chart)**
+#### `data.json`
+```json
+{
+  "bubble": {
+    "datasets": [{
+      "label": "Данные",
+      "data": [
+        { x: 20, y: 30, r: 15 },
+        { x: 40, y: 10, r: 10 },
+        { x: 15, y: 25, r: 20 }
+      ],
+      "backgroundColor": "#FF6384"
+    }]
+  }
+}
+```
+
+#### `BubbleChart.svelte`
+```svelte
+<script>
+  import { onMount, onDestroy } from 'svelte';
+  import { Chart, BubbleController, LinearScale, PointElement, Tooltip } from 'chart.js';
+  import data from './data.json';
+
+  Chart.register(BubbleController, LinearScale, PointElement, Tooltip);
+  let chart;
+
+  onMount(() => {
+    const ctx = document.getElementById('bubbleChart').getContext('2d');
+    chart = new Chart(ctx, {
+      type: 'bubble',
+      data: data.bubble,
+      options: { scales: { x: { type: 'linear', position: 'bottom' } } }
+    });
+  });
+
+  onDestroy(() => chart?.destroy());
+</script>
+
+<canvas id="bubbleChart" />
+```
+
+---
+
+### Как использовать:
+1. Создайте файл `data.json` в папке вашего проекта.
+2. Для каждого типа диаграммы создайте отдельный компонент (например, `BarChart.svelte`).
+3. Импортируйте компоненты на нужную страницу SvelteKit:
+```svelte
+<script>
+  import BarChart from './BarChart.svelte';
+  import LineChart from './LineChart.svelte';
+</script>
+
+<BarChart />
+<LineChart />
+```
+
+---
+
+### Важные заметки:
+- Всегда регистрируйте необходимые элементы Chart.js через `Chart.register()`.
+- Используйте `onDestroy` для очистки ресурсов.
+- Настраивайте цвета и параметры через `options` для лучшего отображения.
+- Для динамической загрузки данных можно использовать `fetch` внутри `onMount`.
+
+Если нужно больше примеров или помощь с конкретным типом диаграммы, дайте знать! 😊

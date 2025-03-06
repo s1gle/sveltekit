@@ -2,9 +2,6 @@
 <h1>advanched</h1>
 <p>
   <a href="/gallery">gallery</a>
-  <a href="/365d">365d</a>
-  <a href="/30d">30d</a> 
-  <a href="/slider">slider</a>
 </p>
 
 <style>
