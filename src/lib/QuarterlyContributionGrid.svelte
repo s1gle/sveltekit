@@ -1,4 +1,3 @@
-<!-- src/lib/QuarterlyContributionGrid.svelte -->
 <script>
   export let data = [];
 
@@ -16,11 +15,10 @@
   let dateCountMap = {};
 
   // Инициализация данных
-  function initialize() {
+  const initialize = () => {
     today.setHours(0, 0, 0, 0);
     const year = today.getFullYear();
     
-    // Создаем структуру месяцев
     months = Array.from({ length: 12 }, (_, i) => {
       const firstDay = new Date(year, i, 1);
       const lastDay = new Date(year, i + 1, 0);
@@ -32,13 +30,12 @@
       };
     });
 
-    // Заполняем недели для каждого месяца
     months.forEach(month => {
       const start = new Date(month.firstDay);
-      start.setDate(start.getDate() - start.getDay()); // Начинаем с понедельника
+      start.setDate(start.getDate() - start.getDay());
       
       const end = new Date(month.lastDay);
-      end.setDate(end.getDate() + (6 - end.getDay())); // Заканчиваем воскресеньем
+      end.setDate(end.getDate() + (6 - end.getDay()));
 
       const weeks = [];
       let current = new Date(start);
@@ -56,31 +53,32 @@
       month.weeks = weeks;
     });
 
-    // Создаем карту дат
-    data.forEach(item => {
+    dateCountMap = data.reduce((acc, item) => {
       const date = new Date(item.date);
       date.setHours(0, 0, 0, 0);
       const key = date.toISOString().split('T')[0];
-      dateCountMap[key] = item.count;
-    });
+      return { ...acc, [key]: item.count };
+    }, {});
+  };
+
+  $: {
+    initialize();
   }
 
-  $: initialize();
-
-  function getCount(date) {
+  const getCount = (date) => {
     const key = date.toISOString().split('T')[0];
     return dateCountMap[key] || 0;
-  }
+  };
 
-  function getColor(count) {
+  const getColor = (count) => {
     if (count === 0) return '#ebedf0';
     if (count <= 3) return '#9be9a8';
     if (count <= 6) return '#40c463';
     if (count <= 9) return '#30a14e';
     return '#216e39';
-  }
+  };
 
-  function showTooltip(e, date, count) {
+  const showTooltip = (e, date, count) => {
     tooltip = { 
       show: true,
       x: e.clientX,
@@ -88,29 +86,34 @@
       date,
       count
     };
-  }
+  };
 
-  function hideTooltip() {
-    tooltip.show = false;
-  }
+  const hideTooltip = () => {
+    tooltip = { ...tooltip, show: false };
+  };
 </script>
 
 <div class="container">
-  {#each QUARTERS as quarter, qIndex}
-    <div class="quarter">
-      {#each quarter as monthIndex}
-        <div class="month">
+  {#each QUARTERS as quarter, qIndex (qIndex)}
+    <div class="quarter" key={qIndex}>
+      {#each quarter as monthIndex (monthIndex)}
+        <div class="month" key={monthIndex}>
           <div class="month-header">{months[monthIndex].name}</div>
           <div class="month-grid">
-            {#each months[monthIndex].weeks as week, wIndex}
-              {#each week as day, dIndex}
+            {#each months[monthIndex].weeks as week, wIndex (wIndex)}
+              {#each week as day, dIndex (dIndex)}
                 <div
                   class="day"
                   class:outside-month={day < months[monthIndex].firstDay || day > months[monthIndex].lastDay}
                   style="background-color: {getColor(getCount(day))}"
                   on:mouseover={(e) => showTooltip(e, day, getCount(day))}
                   on:mouseout={hideTooltip}
-                />
+                  on:focus={(e) => showTooltip(e, day, getCount(day))}
+                  on:blur={hideTooltip}
+                  role="button"
+                  tabindex="0"
+                  aria-label="Contributions on {day.toLocaleDateString()}: {getCount(day)}"
+                ></div>
               {/each}
             {/each}
           </div>
@@ -124,6 +127,8 @@
   <div
     class="tooltip"
     style="left: {tooltip.x + 10}px; top: {tooltip.y + 10}px"
+    role="tooltip"
+    aria-live="polite"
   >
     <div class="tooltip-date">{tooltip.date.toLocaleDateString()}</div>
     <div class="tooltip-count">Contributions: {tooltip.count}</div>
@@ -168,7 +173,9 @@
     width: 12px;
     height: 12px;
     border-radius: 2px;
-    transition: transform 0.1s ease;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    position: relative;
   }
 
   .day.outside-month {
@@ -176,9 +183,12 @@
     opacity: 0.3;
   }
 
-  .day:hover {
+  .day:hover,
+  .day:focus {
     transform: scale(1.3);
     z-index: 1;
+    outline: 2px solid #007bff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   }
 
   .tooltip {
@@ -191,15 +201,18 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     pointer-events: none;
     z-index: 100;
+    max-width: 200px;
   }
 
   .tooltip-date {
     color: #666;
     margin-bottom: 4px;
+    font-size: 0.85rem;
   }
 
   .tooltip-count {
     font-weight: 600;
     color: #333;
+    font-size: 0.9rem;
   }
 </style>

@@ -2,10 +2,9 @@
     import BarChart from '$lib/BarChart.svelte';
     import LineChart from '../../lib/LineChart.svelte';
     import PieChart from '../../lib/PieChart.svelte';
-    import EditData from '../../lib/EditData.svelte';
 </script>
-<h1>Редактирование данных</h1>
-  <EditData />
+<a href="chedit">Редактирование данных</a>
+  
 <h1>Столбчатая диаграмма</h1>
 <BarChart />
 

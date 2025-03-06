@@ -123,4 +123,30 @@
       border: 1px solid #ccc;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
+    /* Кнопки */
+button {
+  background: var(--link);
+  color: var(--bg-1);
+  border-radius: var(--border-radius);
+  border: none;
+  padding: 0.5rem 1rem;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--link-hover);
+}
+
+button:active {
+  background: var(--link-active);
+}
+
+button:disabled {
+  background: var(--link);
+  filter: grayscale();
+  opacity: 0.4;
+}
+
   </style>

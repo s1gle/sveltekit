@@ -2,23 +2,24 @@
 	"/": [],
 	"/advanched": [],
 	"/anime": [],
+	"/api/contributions": [
+		"src/routes/api/contributions/+server.js"
+	],
 	"/api/data": [
 		"src/routes/api/data/+server.js"
 	],
 	"/api/facts": [
 		"src/routes/api/facts/+server.js"
 	],
-	"/api/jokes": [
-		"src/routes/api/jokes/+server.js"
-	],
 	"/barchar": [],
+	"/chedit": [],
 	"/ch": [],
+	"/contributionedit": [],
 	"/contribution": [],
 	"/day-in-history": [],
 	"/emoji": [],
 	"/facts": [],
 	"/gallery": [],
-	"/joke": [],
 	"/kalendarik-pinarik": [],
 	"/palette": [],
 	"/rss": [

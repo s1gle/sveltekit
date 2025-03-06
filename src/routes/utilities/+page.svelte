@@ -4,6 +4,9 @@
   <a id="headbtn" href="/emoji">😀</a>
 </div>
 <div id='btnbox'>
+  <a href="/contributionedit">contributionedit</a>
+
+  
     <a href="/day-in-history">В этот день</a>
     <a href="/rss">rss</a>
     <a href="/kalendarik-pinarik">pinarik</a>
