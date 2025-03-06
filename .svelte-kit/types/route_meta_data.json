@@ -2,9 +2,6 @@
 	"/": [],
 	"/30d": [],
 	"/365d": [],
-	"/add": [
-		"src/routes/add/+page.server.js"
-	],
 	"/advanched": [],
 	"/anime": [],
 	"/api/facts": [
@@ -26,8 +23,5 @@
 		"src/routes/rss/+page.server.js"
 	],
 	"/slider": [],
-	"/utilities": [],
-	"/view": [
-		"src/routes/view/+page.server.js"
-	]
+	"/utilities": []
 }
