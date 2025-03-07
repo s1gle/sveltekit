@@ -10,7 +10,6 @@
 </script>
   <p>Today is {today}</p>
 <p class="vault-title">Создать Класс со шрифтом комкс vault-title</p> 
-  <Button text="Button from lib" />
 <a href='https://jasonstatham.fun/' target='_blank'>онлайн генератор цитат стетхэма</a>
 <a href="https://tpverstak.ru/grid/" target='_blank'>шпаргалка grid</a>
   
