@@ -74,13 +74,13 @@
   
   <!-- Форма для ввода новых данных -->
   <div>
-    <label for="label">Метка:</label>
-    <input id="label" bind:value={newLabel} placeholder="Введите метку" />
+    <label for="label">label</label>
+    <input id="label" bind:value={newLabel} placeholder="" />
   
-    <label for="value">Значение:</label>
-    <input id="value" bind:value={newValue} type="number" placeholder="Введите значение" />
+    <label for="value">value</label>
+    <input id="value" bind:value={newValue} type="number" placeholder="" />
   
-    <button on:click={addData}>Добавить</button>
+    <button on:click={addData}>+</button>
   </div>
   
   <!-- Отображение текущих данных -->
@@ -122,6 +122,11 @@
       padding: 20px;
       border: 1px solid #ccc;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input {
+      width: 100px;
+      border: 1px solid sandybrown;
     }
     /* Кнопки */
 button {

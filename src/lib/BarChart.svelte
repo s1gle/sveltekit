@@ -42,6 +42,6 @@
   </script>
   
   <!-- Контейнер для диаграммы -->
-  <div>
+  <div style="border: 1px solid green; width: 400px; height: auto">
     <canvas id="barChart"></canvas>
   </div>

@@ -12,15 +12,6 @@ export async function GET() {
         const factElement1 = $1('.text'); // Используем правильный селектор
         const fact = factElement1.text().trim();
 
-        // Второй источник: anekdot.ru (пример)
-        const url2 = 'https://www.anekdot.ru/random/anekdot/';
-        const response2 = await axios.get(url2);
-        const $2 = cheerio.load(response2.data);
-
-        // Извлекаем анекдот из второго источника
-        const jokeElement2 = $2('.text'); // Используем правильный селектор
-        const joke = jokeElement2.text().trim();
-
         // Третий источник: example.com (замените на реальный URL)
         const url3 = 'https://randstuff.ru/saying/'; // Пример URL
         const response3 = await axios.get(url3);
@@ -31,9 +22,9 @@ export async function GET() {
         const saying = sayingElement3.text().trim();
 
         // Проверяем, удалось ли извлечь данные из всех источников
-        if (fact && saying && joke) {
+        if (fact && saying) {
             return new Response(
-                JSON.stringify({ fact, saying, joke }),
+                JSON.stringify({ fact, saying }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                 }

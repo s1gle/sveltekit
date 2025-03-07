@@ -1,3 +1,6 @@
+<script>
+  import { API_URL, MAX_ITEMS } from '$lib/constants/config.js';
+</script>
 <h1>utilities</h1>
 <div id="headbox">
   <a id="headbtn" href="/palette">🎨</a>
@@ -10,7 +13,11 @@
     <a href="/day-in-history">В этот день</a>
     <a href="/rss">rss</a>
     <a href="/kalendarik-pinarik">pinarik</a>
+    <a href='https://jasonstatham.fun/' target='_blank'>цитат стетхэма</a>
+<a href="https://tpverstak.ru/grid/" target='_blank'>шпаргалка grid</a>
 </div>
+<p>API URL: {API_URL}</p>
+<p>Max items: {MAX_ITEMS}</p>
 <h2>CSS Flexbox</h2>
 <h3>flex-direction</h3>
 <p>

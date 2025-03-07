@@ -1,4 +1,6 @@
 <script>
+    import { formatDate } from '$lib/utils/date.js';
+    const today = formatDate(new Date());
     import { onMount } from 'svelte';
     export let data;
 
@@ -28,6 +30,7 @@
         fetchNewFacts();
     });
 </script>
+Today is {today}
 <div class='container'>
 <h4>Факт</h4>    
     {#if error}

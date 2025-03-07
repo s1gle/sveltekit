@@ -17,6 +17,6 @@
   
     onDestroy(() => chart?.destroy());
   </script>
-  <div>
+  <div style="border: 1px solid green; width: 400px; height: auto">
   <canvas id="lineChart"></canvas>
 </div>
