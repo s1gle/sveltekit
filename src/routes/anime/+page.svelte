@@ -38,37 +38,108 @@
   ];
 
   let randomImage = '';
-  const randomIndex = Math.floor(Math.random() * images.length);
+  let progress = 0; // Прогресс для progressbar
 
   // Функция для выбора случайного изображения
   const getRandomImage = () => {
+    const randomIndex = Math.floor(Math.random() * images.length);
     return images[randomIndex];
   };
 
-  // При монтировании компонента выбираем случайное изображение и загружаем данные
+  // При монтировании компонента выбираем случайное изображение и запускаем интервал
   onMount(() => {
-    randomImage = getRandomImage();
+    randomImage = getRandomImage(); // Устанавливаем первое изображение
+
+    const interval = setInterval(() => {
+      randomImage = getRandomImage(); // Обновляем изображение каждые 35 секунд
+      progress = 0; // Сбрасываем прогресс
+      startProgressBar(); // Запускаем анимацию progressbar
+    }, 35000);
+
+    startProgressBar(); // Запускаем анимацию progressbar при первой загрузке
+
+    return () => clearInterval(interval); // Очищаем интервал при размонтировании
   });
 
-</script>
-<main>
+  // Функция для анимации progressbar
+  const startProgressBar = () => {
+    const duration = 35000; // 35 секунд
+    const startTime = Date.now();
 
+    const animate = () => {
+      const elapsed = Date.now() - startTime;
+      progress = (elapsed / duration) * 100; // Вычисляем прогресс
+
+      if (elapsed < duration) {
+        requestAnimationFrame(animate); // Продолжаем анимацию
+      } else {
+        progress = 100; // Завершаем анимацию
+      }
+    };
+
+    requestAnimationFrame(animate);
+  };
+</script>
+
+<main>
   <!-- Раздел anime -->
   {#if randomImage}
-    <img src={randomImage} alt="Случайное изображение" />
+    <div class="image-container">
+      <img src={randomImage} alt="Случайное изображение" />
+      <!-- Круглый прогрессбар -->
+      <svg class="progressbar" viewBox="0 0 100 100">
+        <circle
+          cx="50"
+          cy="50"
+          r="45"
+          class="progressbar-background"
+        />
+        <circle
+          cx="50"
+          cy="50"
+          r="45"
+          class="progressbar-fill"
+          stroke-dasharray={2 * Math.PI * 45}
+          stroke-dashoffset={2 * Math.PI * 45 * (1 - progress / 100)}
+        />
+      </svg>
+    </div>
   {:else}
     <p>Загрузка изображения...</p>
   {/if}
+  <a href="/gallery">gallery</a>
 </main>
 
 <style>
-
   img {
     max-width: 100%;
-    margin: 0px 10px;
     height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(250, 8, 8, 0.7);
+    border-radius: 4px;
   }
 
+  .image-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .progressbar {
+    position: relative;
+    width: 50px;
+    height: 100%;
+    transform: rotate(-90deg); /* Начинаем анимацию с верхней точки */
+  }
+
+  .progressbar-background {
+    fill: none;
+    stroke: inherit;
+    stroke-width: 10;
+  }
+
+  .progressbar-fill {
+    fill: none;
+    stroke: darkslategray;
+    stroke-width: 10;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.1s linear; /* Плавное обновление */
+  }
 </style>

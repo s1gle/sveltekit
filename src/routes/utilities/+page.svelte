@@ -7,12 +7,12 @@
   <a id="headbtn" href="/emoji">😀</a>
 </div>
 <div id='btnbox'>
-  <a href="/contributionedit">contributionedit</a>
+  <p>
+  </p>
+  
 
   
-    <a href="/day-in-history">В этот день</a>
-    <a href="/rss">rss</a>
-    <a href="/kalendarik-pinarik">pinarik</a>
+    
     <a href='https://jasonstatham.fun/' target='_blank'>цитат стетхэма</a>
 <a href="https://tpverstak.ru/grid/" target='_blank'>шпаргалка grid</a>
 </div>

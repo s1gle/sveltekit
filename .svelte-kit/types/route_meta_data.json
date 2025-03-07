@@ -11,20 +11,12 @@
 	"/api/facts": [
 		"src/routes/api/facts/+server.js"
 	],
-	"/barchar": [],
-	"/chedit": [],
-	"/ch": [],
 	"/contributionedit": [],
 	"/contribution": [],
 	"/day-in-history": [],
 	"/emoji": [],
 	"/facts": [],
 	"/gallery": [],
-	"/kalendarik-pinarik": [],
 	"/palette": [],
-	"/rss": [
-		"src/routes/rss/+page.server.js"
-	],
-	"/slider": [],
 	"/utilities": []
 }

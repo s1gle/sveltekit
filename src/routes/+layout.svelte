@@ -9,7 +9,7 @@
   <a href="/facts"><span style="font-size: 1.8em">📆</span></a>
   <a href="/advanched"><span style="font-size: 1.8em">🉐</span></a>
   <a href="/anime"><span style="font-size: 1.8em">📺</span></a>
-  <a href="/contribution"><span style="font-size: 1.8em">📊</span></a>
+  
   <a href="/utilities"><span style="font-size: 1.8em">🔨</span></a>
   <Button />
   </nav>

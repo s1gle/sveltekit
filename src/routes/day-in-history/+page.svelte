@@ -39,36 +39,9 @@
     <h2>В этот день</h2>
         {#each events as event}
         <div class="event">
-          <p><span style='color: grey'>{event.year}</span> {event.text}</p>
+          <p><span style='color: DarkGoldenrod'>{event.year}</span> {event.text}</p>
         </div>
       {/each}
     </div>
   {/if}
 </main>
-
-<style>
-
-  .loader,
-  .error {
-    text-align: center;
-  }
-
-  .loader {
-    color: #007bff;
-  }
-
-  .error {
-    color: #ff3860;
-  }
-
-  .events-container {
-    border-radius: 8px;
-    padding: 5px;
-    border: 1px solid grey;
-  }
-
-  .event {
-    line-height: 1.3rem;
-  }
-
-</style>
