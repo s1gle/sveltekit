@@ -13,7 +13,7 @@
   --font: "Trebuchet MS", Helvetica, sans-serif; /* Основной шрифт */
   --font-mono: "Lucida Console", Monaco, monospace; /* Моноширинный шрифт */
 
-  --global-font-size: 18px; /* По умолчанию */
+  --global-font-size: 15px; /* По умолчанию */
 
   --h1-size: 1.5625em;
   --h2-size: 1.4375em;
@@ -75,8 +75,8 @@
   --radius-m: 7px;
   --radius-l: 15px;
 
-  --font-text-theme: Bookerly, 'Inter', "Segoe UI", "霞鹜文楷 GB", "LXGW WenKai", "Microsoft YaHei";
-  --font-family-folder-file-title: Arlrdbd, "Source Han Sans", "Noto Sans CJK", "Source Sans Pro", "Segoe UI Emoji", sans-serif;
+  --font-text-theme: "Segoe UI";
+  --font-family-folder-file-title: "Source Han Sans", "Noto Sans CJK", "Source Sans Pro", "Segoe UI Emoji", sans-serif;
   --font-family-vault: "Lucida Handwriting", "Segoe UI Emoji";
 }
 
