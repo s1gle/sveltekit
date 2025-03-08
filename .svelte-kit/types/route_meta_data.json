@@ -4,6 +4,12 @@
 	"/365d": [],
 	"/advanched": [],
 	"/anime": [],
+	"/api/contributions": [
+		"src/routes/api/contributions/+server.js"
+	],
+	"/api/data": [
+		"src/routes/api/data/+server.js"
+	],
 	"/api/facts": [
 		"src/routes/api/facts/+server.js"
 	],
@@ -13,18 +19,15 @@
 	"/api/saying": [
 		"src/routes/api/saying/+server.js"
 	],
-	"/arch-101": [],
+	"/blog": [],
+	"/blog/[slug]": [],
+	"/contributionedit": [],
 	"/contribution": [],
 	"/day-in-history": [],
 	"/emoji": [],
 	"/facts": [],
 	"/gallery": [],
-	"/joke": [],
 	"/kalendarik-pinarik": [],
 	"/palette": [],
-	"/rss": [
-		"src/routes/rss/+page.server.js"
-	],
-	"/slider": [],
 	"/utilities": []
 }

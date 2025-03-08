@@ -1,42 +1,34 @@
+<!--Главная страница (список постов).-->
 <script>
-/*  Получение цитаты через api saying */
-    import { onMount } from 'svelte';
-	  export let data;
+    const posts = [
+      { slug: 'first-post', title: 'Мой первый пост', excerpt: 'Это краткое описание первого поста.' },
+      { slug: 'sveltekit', title: 'SvelteKit — это круто!', excerpt: 'Почему SvelteKit — это круто.' },
+    ];
+  </script>
+  
+  <h1>Последние посты</h1>
+  <ul>
+    {#each posts as post}
+      <li>
+        <a href={`/blog/${post.slug}`}>{post.title}</a>
+        <p>{post.excerpt}</p>
+      </li>
+    {/each}
+  </ul>
 
-    let saying = data.saying;
-    let error = data.error;
 
-    async function fetchNewSaying() {
-        try {
-            const response = await fetch('/api/saying');
-            const result = await response.json();
 
-            if (response.ok) {
-                saying = result.saying;
-                error = null;
-            } else {
-                error = result.error || 'Не удалось загрузить.';
-            }
-        } catch (err) {
-            error = 'Ошибка при загрузке.';
-        }
-    }
-    // Выполняем fetchNewJoke при загрузке страницы
-    onMount(() => {
-        fetchNewSaying();
-    });
+<!--
+
+<script>
+    import Today from "$lib/components/Today.svelte";
 </script>
-<h1>Сайт собран при помощм sveltekit</h1>
-<div class="saying-container">
-    {#if error}
-        <p class="error">{error}</p>
-    {:else}
-        <p>{saying}</p>
-    {/if}
-</div>
-<a href='https://jasonstatham.fun/' target='_blank'>онлайн генератор цитат стетхэма</a>
+<h1>
 
-  <div style="display: flex; flex-direction: column">
-  <h2>API</h2>
-  <a href="localhost:5173/api/joke" target='_blank'>joke</a>
-  </div>
+<a href="/day-in-history"><Today /> </a> в истории
+</h1>
+<a href="/facts">факты</a> <br>
+<a href="/advanched"><span style="font-size: 1.8em">статистика</span></a> <br>
+<a href="/anime"><span style="font-size: 1.8em">галлерея</span></a> <br>
+<a href="/palette">цвета</a><br>
+<a href="/utilities"><span style="font-size: 1.8em">шпаргалка</span></a> флекс и грид-->
