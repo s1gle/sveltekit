@@ -30,6 +30,7 @@
 		"better-sqlite3": "^11.8.1",
 		"chart.js": "^4.4.8",
 		"cheerio": "^1.0.0",
+		"cookie": "^1.0.2",
 		"rss-parser": "^3.13.0",
 		"three": "^0.174.0"
 	}
