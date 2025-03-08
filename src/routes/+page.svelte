@@ -6,7 +6,7 @@
     ];
   </script>
   
-  <h1>Последние посты</h1>
+  <h3>Последние посты</h3>
   <ul>
     {#each posts as post}
       <li>
@@ -31,4 +31,5 @@
 <a href="/advanched"><span style="font-size: 1.8em">статистика</span></a> <br>
 <a href="/anime"><span style="font-size: 1.8em">галлерея</span></a> <br>
 <a href="/palette">цвета</a><br>
-<a href="/utilities"><span style="font-size: 1.8em">шпаргалка</span></a> флекс и грид-->
+<a href="/utilities"><span style="font-size: 1.8em">шпаргалка</span></a> флекс и грид
+-->

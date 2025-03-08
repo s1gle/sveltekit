@@ -13,12 +13,6 @@
 	"/api/facts": [
 		"src/routes/api/facts/+server.js"
 	],
-	"/api/joke": [
-		"src/routes/api/joke/+server.js"
-	],
-	"/api/saying": [
-		"src/routes/api/saying/+server.js"
-	],
 	"/blog": [],
 	"/blog/[slug]": [],
 	"/contributionedit": [],

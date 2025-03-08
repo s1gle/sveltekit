@@ -157,6 +157,7 @@ h6 {
 ul {
   list-style-type: var(--list-ul-marker-1);
   color: var(--list-ul-marker-color);
+  margin-left: -20px;
 }
 
 ul ul {
@@ -178,7 +179,9 @@ ol ol {
 ol ol ol {
   list-style-type: var(--list-ol-marker-3);
 }
-
+li {
+  padding: 0 10px;
+}
 /* Цитаты */
 blockquote {
   background-color: var(--background-blockquote);
